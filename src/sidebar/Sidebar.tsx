@@ -17,7 +17,7 @@ import {
     FiSettings
 } from 'react-icons/fi'
 import { IoPawOutline } from 'react-icons/io5'
-import NavItem from './navitem'
+import NavItem from './Navitem'
 
 export default function Sidebar() {
     const [navSize, changeNavSize] = useState("large")
