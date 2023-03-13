@@ -15,6 +15,7 @@ import {
 } from '@chakra-ui/react';
 import leaves from '../assets/img/1.png'
 import { useState } from 'react';
+import { useNavigate } from "react-router-dom";
 
 
 export default function LogIn() {
@@ -22,6 +23,7 @@ export default function LogIn() {
  
   const [password, setPassword] = useState('');
   const [email, setEmail] = useState('');
+  const navigate = useNavigate();
 
 
   const handleLogIn = async () => {
@@ -41,6 +43,8 @@ export default function LogIn() {
       localStorage.setItem("token",data.token);
       console.log(localStorage.getItem("token"))
   });
+  navigate("/")
+
   }
   return (
 
@@ -68,7 +72,7 @@ export default function LogIn() {
               <Input type="email"
                 variant='flushed'
                 focusBorderColor='#103D3F'
-                onChange={(e)=> setPassword(e.target.value)}/>
+                onChange={(e)=> setEmail(e.target.value)}/>
             </FormControl>
             <FormControl id="password">
               <FormLabel textAlign={'right'}>كلمة المرور</FormLabel>
@@ -88,7 +92,7 @@ export default function LogIn() {
                   bg: '#ABBEA9',
                 }}
                 onClick={handleLogIn}>
-                 تسجيل دخول
+                  تسجيل دخول
               </Button>
             </Stack>
           </Stack>

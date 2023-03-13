@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react'
+import { useNavigate } from "react-router-dom";
 import {
   Flex,
   Box,
@@ -24,6 +25,7 @@ export default function SignUp() {
   const [password, setPassword] = useState('');
   const [email, setEmail] = useState('');
   const [role, setRole] = useState('');
+  const navigate = useNavigate();
 
   const handleSingUp = async () => {
     await fetch('http://localhost:3003/users/',{
@@ -43,6 +45,7 @@ export default function SignUp() {
       localStorage.setItem("token",data.token);
       console.log(localStorage.getItem("token"))
   });
+  navigate("/")
   }
   return (
     <Flex
@@ -101,7 +104,7 @@ export default function SignUp() {
             </FormControl>
             <Stack spacing={10}>
               <Stack>
-                <Link>لديك حساب ؟ سجل دخول   </Link>
+                <Link href='/LogIn'>لديك حساب ؟ سجل دخول   </Link>
               </Stack>
               <Button
                 bg={'#103D3F'}
@@ -109,7 +112,8 @@ export default function SignUp() {
                 _hover={{
                   bg: '#ABBEA9',
                 }}
-                onClick={handleSingUp}>
+                onClick={handleSingUp}
+                >
                     إنشاء حساب
               </Button>
             </Stack>
