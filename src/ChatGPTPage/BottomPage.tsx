@@ -1,4 +1,4 @@
-import { FormControl, Image, FormLabel, Input, Button, Box, Heading, Container, Stack } from '@chakra-ui/react'
+import { FormControl, Image, FormLabel, Input, Button, Box, Heading, Container, Stack, Spinner } from '@chakra-ui/react'
 import Typewriter, { TypewriterClass } from 'typewriter-effect';
 
 import React, { useState } from 'react'
@@ -9,8 +9,10 @@ function BottomPage() {
     const [prompt, setPrompt] = useState('')
     const [response, setResponse] = useState('')
     const [isTyping, setisTyping] = useState(false)
+    const [isLoading, setIsLoading] = useState(false);
 
     const handleSubmit = async ()=>{
+    setIsLoading(true);
         setResponse('');
         console.log(prompt)
         const chatResponse = await fetch("http://localhost:3000/chat/prompt", {
@@ -32,7 +34,7 @@ function BottomPage() {
       document.documentElement.dir = "ltr"
     }
     return (
-      
+  
       <Box width="100% "   minHeight="100vh" display="flex" flexDirection="column"  alignItems="center">
         <Box textAlign="center" py={4}>
           <Heading>Life Coach Bot</Heading>
@@ -49,7 +51,14 @@ function BottomPage() {
                         typewriter.typeString(response).start();
                       }}
                     />
-                  ): <Features/>}
+                  ): isLoading ?     <Spinner
+                  thickness='4px'
+                  speed='0.65s'
+                  emptyColor='gray.200'
+                  color='#103D3F'
+                  height={"100px"}
+                  width="100px"
+                />:<Features/>}
                 </code>
               </Box>
             </Box>

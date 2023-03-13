@@ -25,7 +25,7 @@ export default function LogIn() {
 
 
   const handleLogIn = async () => {
-    await fetch('http://localhost:3003/users/',{
+    await fetch('http://localhost:3000/user/login',{
       method: "POST",
       headers:{
           "Content-Type": "application/json"
@@ -33,13 +33,16 @@ export default function LogIn() {
       body:JSON.stringify({
           email: email,
           password:password,
-          token:localStorage.getItem("token")
       })
   }).then(res=>res.json())
   .then(data=>{
       console.log(data);
       localStorage.setItem("token",data.token);
       console.log(localStorage.getItem("token"))
+      localStorage.setItem("username",data.username);
+
+
+      
   });
   }
   return (
@@ -68,7 +71,7 @@ export default function LogIn() {
               <Input type="email"
                 variant='flushed'
                 focusBorderColor='#103D3F'
-                onChange={(e)=> setPassword(e.target.value)}/>
+                onChange={(e)=> setEmail(e.target.value)}/>
             </FormControl>
             <FormControl id="password">
               <FormLabel textAlign={'right'}>كلمة المرور</FormLabel>
