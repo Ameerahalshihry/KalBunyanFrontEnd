@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import {
+    ChakraProvider,
     Flex,
     Text,
     IconButton,
@@ -22,7 +23,8 @@ import NavItem from './Navitem'
 export default function Sidebar() {
     const [navSize, changeNavSize] = useState("large")
     return (
-        <Flex
+        <ChakraProvider>
+            <Flex
             pos="fixed"
             top="50%"
             left="5"
@@ -32,48 +34,50 @@ export default function Sidebar() {
             w={navSize == "small" ? "75px" : "200px"}
             flexDir="column"
             justifyContent="center"
-        >
-            <Flex
-                p="5%"
-                flexDir="column"
-                w="100%"
-                alignItems={navSize == "small" ? "center" : "flex-start"}
-                as="nav"
             >
-                <IconButton
-                    background="none"
-                    mt={5}
-                    _hover={{ background: 'none' }}
-                    icon={<FiMenu />}
-                    onClick={() => {
-                        if (navSize == "small")
-                            changeNavSize("large")
+                <Flex
+                    p="5%"
+                    flexDir="column"
+                    w="100%"
+                    alignItems={navSize == "small" ? "center" : "flex-start"}
+                    as="nav"
+                >
+                    <IconButton
+                        background="none"
+                        mt={5}
+                        _hover={{ background: 'none' }}
+                        icon={<FiMenu />}
+                        onClick={() => {
+                            if (navSize == "small")
+                                changeNavSize("large")
 
-                        else
-                            changeNavSize("small")
-                    } } aria-label={''}                />
-                <NavItem navSize={navSize} icon={FiHome} title="Dashboard" description="Your Sessions" />
-                <NavItem navSize={navSize} icon={FiCalendar} title="Sessions" active />
-                <NavItem navSize={navSize} icon={FiUser} title="Chat" />
-                
-            </Flex>
+                            else
+                                changeNavSize("small")
+                        } } aria-label={''}                />
+                    <NavItem navSize={navSize} icon={FiHome} title="Dashboard" description="Your Sessions" />
+                    <NavItem navSize={navSize} icon={FiCalendar} title="Sessions" active />
+                    <NavItem navSize={navSize} icon={FiUser} title="Chat" />
+                    
+                </Flex>
 
-            <Flex
-                p="5%"
-                flexDir="column"
-                w="100%"
-                alignItems={navSize == "small" ? "center" : "flex-start"}
-                mb={4}
-            >
-                <Divider display={navSize == "small" ? "none" : "flex"} />
-                <Flex mt={4} align="center">
-                    <Avatar size="sm" src="avatar-1.jpg" />
-                    <Flex flexDir="column" ml={4} display={navSize == "small" ? "none" : "flex"}>
-                        <Heading as="h3" size="sm">Sylwia Weller</Heading>
-                        <Text color="gray">Admin</Text>
+                <Flex
+                    p="5%"
+                    flexDir="column"
+                    w="100%"
+                    alignItems={navSize == "small" ? "center" : "flex-start"}
+                    mb={4}
+                >
+                    <Divider display={navSize == "small" ? "none" : "flex"} />
+                    <Flex mt={4} align="center">
+                        <Avatar size="sm" src="avatar-1.jpg" />
+                        <Flex flexDir="column" ml={4} display={navSize == "small" ? "none" : "flex"}>
+                            <Heading as="h3" size="sm">Sylwia Weller</Heading>
+                            <Text color="gray">Admin</Text>
+                        </Flex>
                     </Flex>
                 </Flex>
             </Flex>
-        </Flex>
+        </ChakraProvider>
+        
     )
 }

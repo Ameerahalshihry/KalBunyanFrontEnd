@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import {
+  ChakraProvider,
     FormControl,
     FormLabel,
     FormErrorMessage,
@@ -38,20 +39,23 @@ const SignUp = () => {
   }
 
   return (
-    <FormControl>
-    <FormLabel>Username</FormLabel>
-    <Input type='text' onChange={(e)=> setUserName(e.target.value)}/>
-    <FormLabel>Email address</FormLabel>
-    <Input type='email'  onChange={(e)=> setEmail(e.target.value)}/>
-    <FormLabel>Password</FormLabel>
-    <Input type='password' onChange={(e)=> setPassword(e.target.value)} />
-    <FormLabel>Role</FormLabel>
-    <Select placeholder='Select Role' onChange={(e)=> setRole(e.target.value)} >
-        <option value="User">User</option>
-        <option value="Supporter">Supporter</option>
-    </Select>
-    <Button colorScheme='blue' onClick={handleSingUp}>SignUp</Button>
-    </FormControl>
+    <ChakraProvider>
+      <FormControl>
+        <FormLabel>Username</FormLabel>
+        <Input type='text' onChange={(e)=> setUserName(e.target.value)}/>
+        <FormLabel>Email address</FormLabel>
+        <Input type='email'  onChange={(e)=> setEmail(e.target.value)}/>
+        <FormLabel>Password</FormLabel>
+        <Input type='password' onChange={(e)=> setPassword(e.target.value)} />
+        <FormLabel>Role</FormLabel>
+        <Select placeholder='Select Role' onChange={(e)=> setRole(e.target.value)} >
+            <option value="User">User</option>
+            <option value="Supporter">Supporter</option>
+        </Select>
+        <Button colorScheme='blue' onClick={handleSingUp}>SignUp</Button>
+      </FormControl>
+    </ChakraProvider>
+    
   )
 }
 

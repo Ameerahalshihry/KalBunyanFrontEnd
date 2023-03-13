@@ -1,5 +1,6 @@
 import React from 'react'
 import {
+    ChakraProvider,
     FormControl,
     FormLabel,
     FormErrorMessage,
@@ -9,12 +10,14 @@ import {
   
 const LogIn = () => {
   return (
-    <FormControl>
-    <FormLabel>Email address</FormLabel>
-    <Input type='email' />
-    <FormLabel>Password</FormLabel>
-    <Input type='password' />
-    </FormControl>
+    <ChakraProvider>
+      <FormControl>
+        <FormLabel>Email address</FormLabel>
+        <Input type='email' />
+        <FormLabel>Password</FormLabel>
+        <Input type='password' />
+      </FormControl>
+    </ChakraProvider> 
   )
 }
 
