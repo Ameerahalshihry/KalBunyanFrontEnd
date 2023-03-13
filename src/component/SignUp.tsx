@@ -19,6 +19,7 @@ import {
 import leaves from '../assets/img/1.png'
 
 
+
 export default function SignUp() {
 
   const [userName, setUserName] = useState('');
@@ -28,7 +29,7 @@ export default function SignUp() {
   const navigate = useNavigate();
 
   const handleSingUp = async () => {
-    await fetch('http://localhost:3003/users/',{
+    await fetch('http://localhost:3000/user/create',{
       method: "POST",
       headers:{
           "Content-Type": "application/json"
@@ -42,8 +43,10 @@ export default function SignUp() {
   }).then(res=>res.json())
   .then(data=>{
       console.log(data);
-      localStorage.setItem("token",data.token);
+      localStorage.setItem("token", data.token);
       console.log(localStorage.getItem("token"))
+      localStorage.setItem("username",data.username);
+
   });
   navigate("/")
   }

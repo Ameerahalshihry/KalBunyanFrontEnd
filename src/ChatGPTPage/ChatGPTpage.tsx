@@ -8,12 +8,19 @@ import {
     Button,
     Icon,
     IconProps,
+    useMediaQuery,
   } from '@chakra-ui/react';
+import { useState } from 'react';
+import Sidebar from '../sidebar/Sidebar';
 import BottomPage from './BottomPage';
   
   export default function ChatGPTPage() {
+    const [isLargerThan1300] = useMediaQuery("(min-width: 1300px)");
+
+
     return (
       <div style={{backgroundColor:"#E8E2DF"}}>
+      {isLargerThan1300 && <Sidebar />}
       <Container    maxW={'5xl'}>
         <Stack
         mt="0"
