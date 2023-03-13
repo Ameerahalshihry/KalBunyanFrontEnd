@@ -1,8 +1,13 @@
 import React from 'react'
+import { CreateSession } from './CreateSession'
 
 const Profile = () => {
   return (
-    <div>Profile</div>
+    <div>
+        <h2>Profile</h2>
+            <CreateSession/>
+    </div>
+
   )
 }
 
