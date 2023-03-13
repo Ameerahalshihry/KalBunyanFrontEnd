@@ -1,5 +1,6 @@
 import React from 'react'
 import {
+    ChakraProvider,
     Flex,
     Text,
     Icon,
@@ -11,7 +12,8 @@ import {
 
 export default function NavItem({ icon, title, description, active, navSize }:any) {
     return (
-        <Flex zIndex={"9"}
+        <ChakraProvider>
+            <Flex zIndex={"9"}
             mt={30}
             flexDir="column"
             w="100%"
@@ -34,6 +36,7 @@ export default function NavItem({ icon, title, description, active, navSize }:an
                 </Link>
                 
             </Menu>
-        </Flex>
+        </Flex>        </ChakraProvider>
+
     )
 }

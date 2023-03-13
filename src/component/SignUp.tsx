@@ -1,6 +1,19 @@
 import React, { useEffect, useState } from 'react'
 import { useNavigate } from "react-router-dom";
 import {
+<<<<<<< HEAD
+  ChakraProvider,
+    FormControl,
+    FormLabel,
+    FormErrorMessage,
+    FormHelperText,
+    Input,
+    Select,
+    Button,
+  } from '@chakra-ui/react'
+  
+const SignUp = () => {
+=======
   Flex,
   Box,
   FormControl,
@@ -21,6 +34,7 @@ import leaves from '../assets/img/1.png'
 
 
 export default function SignUp() {
+>>>>>>> dba38e26ccb91697272793735a2243a8d4333649
 
   const [userName, setUserName] = useState('');
   const [password, setPassword] = useState('');
@@ -51,6 +65,27 @@ export default function SignUp() {
   navigate("/")
   }
   return (
+<<<<<<< HEAD
+    <ChakraProvider>
+      <FormControl>
+        <FormLabel>Username</FormLabel>
+        <Input type='text' onChange={(e)=> setUserName(e.target.value)}/>
+        <FormLabel>Email address</FormLabel>
+        <Input type='email'  onChange={(e)=> setEmail(e.target.value)}/>
+        <FormLabel>Password</FormLabel>
+        <Input type='password' onChange={(e)=> setPassword(e.target.value)} />
+        <FormLabel>Role</FormLabel>
+        <Select placeholder='Select Role' onChange={(e)=> setRole(e.target.value)} >
+            <option value="User">User</option>
+            <option value="Supporter">Supporter</option>
+        </Select>
+        <Button colorScheme='blue' onClick={handleSingUp}>SignUp</Button>
+      </FormControl>
+    </ChakraProvider>
+    
+  )
+}
+=======
     <Flex
       minH={'100vh'}
       align={'center'}
@@ -58,6 +93,7 @@ export default function SignUp() {
       bg={'#E8E2DF'}
       >
         <Image src={leaves} width={'20%'} display={{base:"none", sm:"inline"}}></Image>
+>>>>>>> dba38e26ccb91697272793735a2243a8d4333649
 
       <Stack spacing={8} mx={'auto'} maxW={'xl'} py={12}>
         <Stack align={'center'}>
