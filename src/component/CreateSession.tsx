@@ -1,9 +1,11 @@
-import { useDisclosure, Button, Modal, ModalOverlay, ModalContent, ModalHeader, ModalCloseButton, ModalBody, FormControl, FormLabel, Input, ModalFooter, Text , Image, ChakraProvider} from "@chakra-ui/react"
+import { useDisclosure, Button, Modal, ModalOverlay, ModalContent, ModalHeader, ModalCloseButton, ModalBody, FormControl, FormLabel, Input, ModalFooter, Text , Image, ChakraProvider, Box, Textarea} from "@chakra-ui/react"
 import React, { useState } from "react"
 import DateTimePicker from 'react-datetime-picker';
+
 export function CreateSession() {
     const { isOpen, onOpen, onClose } = useDisclosure()
-  
+    const [x, setX] = useState(new Date());
+
     const initialRef = React.useRef(null)
     const finalRef = React.useRef(null)
   
@@ -11,7 +13,6 @@ export function CreateSession() {
     const [date, setDate] = useState('');
     const [time, setTime] = useState('');
     const [description, setDescription] = useState('');
-    const [value, onChange] = useState(new Date());
 
     const handleCreateSession = async()=>{
         await fetch('http://localhost:3003/sessions/',{
@@ -23,7 +24,6 @@ export function CreateSession() {
                 topic: topic,
                 date:date,
                 description:description,
-                time:time,
                 token:localStorage.getItem("token")
 
             })
@@ -77,30 +77,21 @@ export function CreateSession() {
                 />
               </FormControl>
               <FormControl mt={4}>
-                <Input placeholder='وصف الجلسة' 
+                <Textarea placeholder='وصف الجلسة' 
                 textAlign={'right'}
                 variant='flushed'  
                 focusBorderColor='#103D3F'
                 onChange={(e)=> setDescription(e.target.value)}/>
               </FormControl>
               <FormControl mt={4}>
-                <Input placeholder='تاريخ الجلسه'
-                textAlign={'right'} 
-                variant='flushed'  
-                focusBorderColor='#103D3F'
-                onChange={(e)=> setDate(e.target.value)}/>
-              </FormControl>
-              <FormControl mt={4}>
-                <Input placeholder='وقت الجلسة'
-                textAlign={'right'} 
-                variant='flushed'  
-                focusBorderColor='#103D3F'
-                onChange={(e)=> setTime(e.target.value)}/>
+                <FormLabel color='gray.500'>موعد الجلسة</FormLabel>
+                <Box align='right'>
+                <DateTimePicker onChange={setDate} value={date}/>
+                </Box>
               </FormControl>
             </ModalBody>
   
             <ModalFooter>
-              <Button mr={3} onClick={onClose}>إلغاء</Button>
               <Button 
               bg={'#103D3F'}
               color={'white'}
@@ -111,6 +102,8 @@ export function CreateSession() {
               >
                 إنشاء
               </Button>
+              <Button mr={3} onClick={onClose}>إلغاء</Button>
+
             </ModalFooter>
           </ModalContent>
         </Modal></ChakraProvider>

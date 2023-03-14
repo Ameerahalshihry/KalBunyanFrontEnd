@@ -13,16 +13,14 @@ const Home = () => {
   return (
     <>
     {/*----------HEADER----------*/}
-      {/* <header className='headerBg'>
+      <header className='headerBg'>
           <img className='imgHeaderContent' src={img_header} alt="" />
           <div className='headerContent'>
             <div>احصل على المساعدة، 
             <br/> مجموعات الدعم لمواجهة تحديات الحياة</div> 
             <button onClick={SignUp}> انضم معنا</button>
           </div>  
-      </header> */}
-                <Profile/>  
-
+      </header>
     </>
   )
 }

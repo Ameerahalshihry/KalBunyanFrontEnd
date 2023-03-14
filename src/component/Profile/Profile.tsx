@@ -63,7 +63,7 @@ const Profile = () => {
         {/* ----------------section1------------------------ */}
         <PersonalInfo />
         {/* try change condition to 'Admin' */}
-        {role != 'Admin' ? (
+        {role == 'Admin' ? (
           <Container>
         {/* ----------------section2------------------------ */}
         <PastSessions />
