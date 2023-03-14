@@ -1,4 +1,4 @@
-
+import Sidebar from '../sidebar/Sidebar'
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import img_header from '../assets/img_header.png';
@@ -10,12 +10,6 @@ const Home = () => {
   }
 
   return (
-    // <div style={{"minHeight": "90vh"}} >
-    //   <br/>
-    //   <a href="./LogIn" ><button> Log In</button></a>
-    //   <br/>
-    //   <a href="./SignUp" ><button> Sign Up</button></a>
-    // </div>
     <>
     {/*----------HEADER----------*/}
       <header className='headerBg'>

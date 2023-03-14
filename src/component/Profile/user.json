@@ -1,0 +1,28 @@
+{
+    "username":"Rayan",
+    "role":"Supporter",
+    "email":"Rayan@gmail.com",
+    "suggestions":[
+        "مجموعات الربو عند الاطفال",
+        "مجموعات دعم التصلب اللويحي "
+    ],
+    "sessions":[
+        {
+            "topic":"تغيير الوظيفه",
+            "date":"Sunday 10 March 7:00 PM",
+            "supporter":"فاطمه الثنيان"
+        },
+        {
+            "topic":" اختيار التخصص الجامعي",
+            "date":"Sunday 22 April 7:00 PM",
+            "supporter":"فاطمه الثنيان"
+
+        },
+        {
+            "topic":" اختيار التخصص الجامعي",
+            "date":"Sunday 22 April 7:00 PM",
+            "supporter":"فاطمه الثنيان"
+
+        }
+    ]
+}
