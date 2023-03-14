@@ -1,5 +1,5 @@
 import { ReactElement } from 'react';
-import { Box, SimpleGrid, Icon, Text, Stack, Flex } from '@chakra-ui/react';
+import { ChakraProvider, Box, SimpleGrid, Icon, Text, Stack, Flex } from '@chakra-ui/react';
 import { FcVoicePresentation, FcMindMap, FcLock } from 'react-icons/fc';
 
 interface FeatureProps {
@@ -10,21 +10,24 @@ interface FeatureProps {
 
 const Feature = ({ title, text, icon }: FeatureProps) => {
   return (
-    <Stack>
-      <Flex
-        w={16}
-        h={16}
-        align={'center'}
-        justify={'center'}
-        color={'white'}
-        rounded={'full'}
-        bg={'gray.100'}
-        mb={1}>
-        {icon}
-      </Flex>
-      <Text fontWeight={600}>{title}</Text>
-      <Text color={'gray.600'}>{text}</Text>
-    </Stack>
+    <ChakraProvider>
+      <Stack>
+        <Flex
+          w={16}
+          h={16}
+          align={'center'}
+          justify={'center'}
+          color={'white'}
+          rounded={'full'}
+          bg={'gray.100'}
+          mb={1}>
+          {icon}
+        </Flex>
+        <Text fontWeight={600}>{title}</Text>
+        <Text color={'gray.600'}>{text}</Text>
+      </Stack>
+    </ChakraProvider>
+    
   );
 };
 

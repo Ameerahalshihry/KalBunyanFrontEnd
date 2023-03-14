@@ -1,5 +1,6 @@
 import React from 'react'
 import {
+    ChakraProvider,
     Flex,
     Text,
     Icon,
@@ -8,11 +9,11 @@ import {
     MenuButton,
     MenuList
 } from '@chakra-ui/react'
-import NavHoverBox from './Navhoverbox'
 
 export default function NavItem({ icon, title, description, active, navSize }:any) {
     return (
-        <Flex zIndex={"9"}
+        <ChakraProvider>
+            <Flex zIndex={"9"}
             mt={30}
             flexDir="column"
             w="100%"
@@ -33,16 +34,9 @@ export default function NavItem({ icon, title, description, active, navSize }:an
                         </Flex>
                     </MenuButton>
                 </Link>
-                <MenuList
-                    py={0}
-                    border="none"
-                    w={200}
-                    h={200}
-                    ml={5}
-                >
-                    <NavHoverBox zIndex={"9"} title={title} icon={icon} description={description} />
-                </MenuList>
+                
             </Menu>
-        </Flex>
+        </Flex>        </ChakraProvider>
+
     )
 }

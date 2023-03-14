@@ -1,4 +1,4 @@
-import { FormControl, Image, FormLabel, Input, Button, Box, Heading, Container, Stack } from '@chakra-ui/react'
+import { FormControl, Image, FormLabel, Input, Button, Box, Heading, Container, Stack, Spinner, ChakraProvider } from '@chakra-ui/react'
 import Typewriter, { TypewriterClass } from 'typewriter-effect';
 
 import React, { useState } from 'react'
@@ -9,8 +9,10 @@ function BottomPage() {
     const [prompt, setPrompt] = useState('')
     const [response, setResponse] = useState('')
     const [isTyping, setisTyping] = useState(false)
+    const [isLoading, setIsLoading] = useState(false);
 
     const handleSubmit = async ()=>{
+    setIsLoading(true);
         setResponse('');
         console.log(prompt)
         const chatResponse = await fetch("http://localhost:3000/chat/prompt", {
@@ -32,7 +34,8 @@ function BottomPage() {
       document.documentElement.dir = "ltr"
     }
     return (
-      
+      <ChakraProvider>
+
       <Box width="100% "   minHeight="100vh" display="flex" flexDirection="column"  alignItems="center">
         <Box textAlign="center" py={4}>
           <Heading>Life Coach Bot</Heading>
@@ -49,7 +52,14 @@ function BottomPage() {
                         typewriter.typeString(response).start();
                       }}
                     />
-                  ): <Features/>}
+                  ): isLoading ?     <Spinner
+                  thickness='4px'
+                  speed='0.65s'
+                  emptyColor='gray.200'
+                  color='#103D3F'
+                  height={"100px"}
+                  width="100px"
+                />:<Features/>}
                 </code>
               </Box>
             </Box>
@@ -59,27 +69,28 @@ function BottomPage() {
           <Container   >
             <Stack  direction="row" align="center">
               <Input  size = "lg"
-               width="100%"
-               
-              bgColor={"white"}
+               width="100%" 
+                bgColor={"white"}
                 placeholder="Type your message here"
                 flex="1"
                 type="text"
                 value={prompt}
                 onChange={(event) => setPrompt(event.target.value)}
-              />
-              <Button
-                bg="#103D3F"
-                onClick={handleSubmit}
-                ml={4}
-                colorScheme="orange"
-              >
-                Send
-              </Button>
-            </Stack>
-          </Container>
+                />
+                <Button
+                  bg="#103D3F"
+                  onClick={handleSubmit}
+                  ml={4}
+                  colorScheme="orange"
+                >
+                  Send
+                </Button>
+              </Stack>
+            </Container>
+          </Box>
         </Box>
-      </Box>
+      </ChakraProvider>
+      
     );
     
 }

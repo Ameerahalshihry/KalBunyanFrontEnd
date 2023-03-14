@@ -1,4 +1,26 @@
 import {
+<<<<<<< HEAD
+    ChakraProvider,
+    FormControl,
+    FormLabel,
+    FormErrorMessage,
+    FormHelperText,
+    Input,
+  } from '@chakra-ui/react'
+  
+const LogIn = () => {
+  return (
+    <ChakraProvider>
+      <FormControl>
+        <FormLabel>Email address</FormLabel>
+        <Input type='email' />
+        <FormLabel>Password</FormLabel>
+        <Input type='password' />
+      </FormControl>
+    </ChakraProvider> 
+  )
+}
+=======
   Flex,
   Box,
   FormControl,
@@ -16,6 +38,7 @@ import {
 import leaves from '../assets/img/1.png'
 import { useState } from 'react';
 import { useNavigate } from "react-router-dom";
+>>>>>>> dba38e26ccb91697272793735a2243a8d4333649
 
 
 export default function LogIn() {
@@ -27,7 +50,7 @@ export default function LogIn() {
 
 
   const handleLogIn = async () => {
-    await fetch('http://localhost:3003/users/',{
+    await fetch('http://localhost:3000/user/login',{
       method: "POST",
       headers:{
           "Content-Type": "application/json"
@@ -35,13 +58,16 @@ export default function LogIn() {
       body:JSON.stringify({
           email: email,
           password:password,
-          token:localStorage.getItem("token")
       })
   }).then(res=>res.json())
   .then(data=>{
       console.log(data);
       localStorage.setItem("token",data.token);
       console.log(localStorage.getItem("token"))
+      localStorage.setItem("username",data.username);
+
+
+      
   });
   navigate("/")
 
