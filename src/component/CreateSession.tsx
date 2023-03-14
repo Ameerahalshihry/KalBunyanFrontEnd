@@ -10,12 +10,13 @@ export function CreateSession() {
     const finalRef = React.useRef(null)
   
     const [topic, setTopic] = useState('');
-    const [date, setDate] = useState('');
-    const [time, setTime] = useState('');
+    const [date, setDate] = useState<any>('');
     const [description, setDescription] = useState('');
 
     const handleCreateSession = async()=>{
-        await fetch('http://localhost:3003/sessions/',{
+      console.log(date)
+      
+        await fetch('http://localhost:3003/session/',{
             method: "POST",
             headers:{
                 "Content-Type": "application/json"
@@ -85,7 +86,7 @@ export function CreateSession() {
               </FormControl>
               <FormControl mt={4}>
                 <FormLabel color='gray.500'>موعد الجلسة</FormLabel>
-                <Box align='right'>
+                <Box style={{direction:"ltr"}}>
                 <DateTimePicker onChange={setDate} value={date}/>
                 </Box>
               </FormControl>
