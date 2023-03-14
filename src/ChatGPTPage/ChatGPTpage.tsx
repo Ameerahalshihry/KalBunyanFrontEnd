@@ -23,7 +23,6 @@ import BottomPage from './BottomPage';
       <ChakraProvider>
 
       <div style={{backgroundColor:"#E8E2DF"}}>
-      {isLargerThan1300 && <Sidebar />}
       <Container    maxW={'5xl'}>
         <Stack
         mt="0"

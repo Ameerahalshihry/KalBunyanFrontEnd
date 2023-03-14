@@ -10,22 +10,25 @@ export function CreateSession() {
     const finalRef = React.useRef(null)
   
     const [topic, setTopic] = useState('');
-    const [date, setDate] = useState<any>('');
+    const [date, setDate] = useState<any>();
     const [description, setDescription] = useState('');
+    const [token, setToken] = useState<any>(localStorage.getItem("token"));
 
     const handleCreateSession = async()=>{
       console.log(date)
       
-        await fetch('http://localhost:3003/session/',{
+        await fetch('http://localhost:3000/session/create',{
             method: "POST",
-            headers:{
+            headers:{ 
+              "authorization": token,
                 "Content-Type": "application/json"
             },
             body:JSON.stringify({
+
                 topic: topic,
                 date:date,
                 description:description,
-                token:localStorage.getItem("token")
+
 
             })
         }).then(res=>res.json())
