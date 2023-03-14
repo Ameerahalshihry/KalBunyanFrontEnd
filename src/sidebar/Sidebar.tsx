@@ -16,7 +16,7 @@ import {
     FiBriefcase,
     FiSettings
 } from 'react-icons/fi'
-import { IoPawOutline } from 'react-icons/io5'
+// import { IoPawOutline } from 'react-icons/io5'
 import NavItem from './Navitem'
 
 export default function Sidebar() {
