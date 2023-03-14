@@ -6,7 +6,8 @@ import Nav from './component/Nav';
 import Footer from './component/Footer';
 import ChatGPTPage from './ChatGPTPage/ChatGPTpage';
 import Chat from './Chatroom/Chat';
-import { BrowserRouter, Route, Routes } from 'react-router-dom';
+import Routes_ from './component/Routes'
+import { BrowserRouter, Route } from 'react-router-dom';
 import Home from './component/Home';
 
 function App() {
@@ -14,7 +15,7 @@ function App() {
   return (
     <div>
       <Nav />
-    <Routes />
+    <Routes_ />
     <Footer />
     
     </div>
