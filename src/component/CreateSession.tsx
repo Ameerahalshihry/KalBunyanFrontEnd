@@ -1,4 +1,4 @@
-import { useDisclosure, Button, Modal, ModalOverlay, ModalContent, ModalHeader, ModalCloseButton, ModalBody, FormControl, FormLabel, Input, ModalFooter, Text , Image} from "@chakra-ui/react"
+import { useDisclosure, Button, Modal, ModalOverlay, ModalContent, ModalHeader, ModalCloseButton, ModalBody, FormControl, FormLabel, Input, ModalFooter, Text , Image, ChakraProvider} from "@chakra-ui/react"
 import React, { useState } from "react"
 import DateTimePicker from 'react-datetime-picker';
 export function CreateSession() {
@@ -34,6 +34,7 @@ export function CreateSession() {
         }
     return (
       <>
+      <ChakraProvider>
       <Text
         m='6' textAlign={'center'} fontSize={'lg'} fontWeight={'bold'}>
       يمكنك ان تحدث فرقاً في حياة الآخرين وتشارك تجارب حياتك وتجلب الأمل للآخرين بضغطة واحدة لإنشاء جلسة
