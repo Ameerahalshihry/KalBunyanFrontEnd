@@ -19,8 +19,15 @@ import {
   useFocusEffect,
   Badge,
   Kbd,
+  Center,
+  AbsoluteCenter,
+  Container,
+  Avatar,
+  Tag,
+  TagLabel,
 } from "@chakra-ui/react";
 import { ChakraProvider } from "@chakra-ui/react";
+import { element } from "prop-types";
 
 type Message = {
   user: string;
@@ -49,11 +56,20 @@ const ChatMessage = ({ user, text, isSent, ...rest }: Message & ListItemProps) =
       <Box
         bg={isSent ? 'gray.100' : 'blue.200'}
         color={isSent ? 'black' : 'white'}
-        width="100%"
+        width="20vw"
         p={2}
         borderRadius="md"
       >
-        {text}        <Text  fontWeight="bold">{user}</Text>
+        {text}        <Text  fontWeight="bold"><Tag size='lg' colorScheme='green' borderRadius='full'>
+  <Avatar
+    src='https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQmatBzkPfadV3gbygHddFgNYbNzBbINaWqFamNP3zOCJyY-EZzJJZW3SjSpeYSGfSlsgI&usqp=CAU'
+    size='xs'
+    name=''
+    ml={2}
+    mr={-1}
+  />
+  <TagLabel>{user}</TagLabel>
+</Tag></Text>
 
       </Box>
     </ListItem></ChakraProvider>
@@ -62,7 +78,7 @@ const ChatMessage = ({ user, text, isSent, ...rest }: Message & ListItemProps) =
 
 
   const ChatRoom = ({sessionId}:ChatRoomProps) => {
-  const [username, setUsername] = useState(localStorage.getItem('username'));
+  const [username, setUsername] = useState('');
   const [message, setMessage] = useState("");
   const [messages, setMessages] = useState<Message[]>([]);
   const [socket, setSocket] = useState<any>();
@@ -73,14 +89,16 @@ const ChatMessage = ({ user, text, isSent, ...rest }: Message & ListItemProps) =
   const [topic, setTopic] = useState<string[]>([]);
 
   const chatBoxRef = useRef<HTMLDivElement>(null);
+
   useEffect(() => {
 
-  if( chatBoxRef.current)        chatBoxRef.current.scrollTo(0, chatBoxRef.current.scrollHeight);
+  if( chatBoxRef.current)   chatBoxRef.current.scrollTo(0, chatBoxRef.current.scrollHeight);
   },[messages])
+
   useEffect(() => {
 
-  
-
+    let name = localStorage.getItem('username')
+    name && setUsername(name)
     async function getSession(){
         const session = await fetch(`http://localhost:3000/session/${sessionId}`, {
           method: "GET",
@@ -109,7 +127,10 @@ const ChatMessage = ({ user, text, isSent, ...rest }: Message & ListItemProps) =
     socket.on('userJoined', (data:any) => {
         
         const newUser = data.username;  
-        setUsers(prevUsers => [...prevUsers, newUser]);
+        setUsers([
+          ...users,
+          newUser
+        ]);
         console.log(users)
 
     })
@@ -124,13 +145,16 @@ const ChatMessage = ({ user, text, isSent, ...rest }: Message & ListItemProps) =
           
           let values = [];
           for(let k in data.users) {values.push(data.users[k])}
+          console.log(data.users)
         setUsers(values);
+        console.log(users)
 
     })
     
     socket.on('connect', () => {
-        console.log(socket.id);
+        console.log(users);
         username && users.push(username)
+        setUsername(username)
         socket.emit('join', {username: username, sessionId: sessionId})
 
       });
@@ -151,8 +175,7 @@ const ChatMessage = ({ user, text, isSent, ...rest }: Message & ListItemProps) =
       socket.disconnect();
       localStorage.removeItem('session')
     };
-  }, []);
-
+  }, [username]);
 
 
   const handleMessageSubmit = () => {
@@ -170,10 +193,14 @@ const ChatMessage = ({ user, text, isSent, ...rest }: Message & ListItemProps) =
   };
 
   return (
-    <ChakraProvider>
-    <Flex height="100vh">
-      <Box w="25%" bg="#E8E2DF" p={4}>
-      <Heading mb={4}>Topic</Heading>
+    <ChakraProvider>  
+    <Flex  height="100vh">
+    
+    <Container   w="25%" bg="#E8E2DF" p={4}  display={"flex"} alignItems="flex-start" justifyContent={"center"}>
+      <Box >
+      
+
+      <Heading  mb={4}>Topic</Heading>
       {topic}
       <Heading mb={4}>Leader</Heading>
         {leader}
@@ -182,20 +209,37 @@ const ChatMessage = ({ user, text, isSent, ...rest }: Message & ListItemProps) =
         <Divider />
         <VStack mt={4} align="stretch" spacing={2}>
                      {allusers.map((element, index) => (
+
                       
              <Text key = {index} fontSize='xl' fontWeight='bold'>
-              {users.includes(element)?  <Badge ml='1' fontSize='0.5em' colorScheme='green'>
-              Online
-             </Badge> :  <Badge ml='1' fontSize='0.5em' colorScheme='red'>
-              offline
-             </Badge>}
+              {users.includes(element)? <Tag size='lg' colorScheme='green' borderRadius='full'>
+  <Avatar
+    src='https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQmatBzkPfadV3gbygHddFgNYbNzBbINaWqFamNP3zOCJyY-EZzJJZW3SjSpeYSGfSlsgI&usqp=CAU'
+    size='xs'
+    name=''
+    ml={2}
+    mr={-1}
+  />
+  <TagLabel>{element}</TagLabel>
+</Tag> : 
              
-             {element}
+             <Tag size='lg' colorScheme='red' borderRadius='full'>
+  <Avatar
+    src='https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQmatBzkPfadV3gbygHddFgNYbNzBbINaWqFamNP3zOCJyY-EZzJJZW3SjSpeYSGfSlsgI&usqp=CAU'
+    size='xs'
+    name=''
+    ml={2}
+    mr={-1}
+  />
+  <TagLabel>{element}</TagLabel>
+</Tag>}
+             
+            
              
            </Text> 
              ))}     
         </VStack>
-      </Box>
+      </Box></Container>
 
       <Box  flex="1"   p={4} >
         <Box ref= {chatBoxRef} overflowY={"scroll"}  height={"75vh"} borderWidth="1px" borderRadius="lg" >
@@ -209,7 +253,7 @@ const ChatMessage = ({ user, text, isSent, ...rest }: Message & ListItemProps) =
     text={message.text}
     isSent={message.isSent}
   >
-    <Text fontWeight="bold">{message.user}: </Text>
+    <Text fontWeight="bold">{message.user} </Text>
   </ChatMessage>
 ))}         </List>
  
