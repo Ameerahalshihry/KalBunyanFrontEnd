@@ -1,6 +1,6 @@
-import { useDisclosure, Button, Modal, ModalOverlay, ModalContent, ModalHeader, ModalCloseButton, ModalBody, FormControl, FormLabel, Input, ModalFooter, Text , Image} from "@chakra-ui/react"
+import { useDisclosure, Button, Modal, ModalOverlay, ModalContent, ModalHeader, ModalCloseButton, ModalBody, FormControl, FormLabel, Input, ModalFooter, Text , Image, ChakraProvider} from "@chakra-ui/react"
 import React, { useState } from "react"
-
+import DateTimePicker from 'react-datetime-picker';
 export function CreateSession() {
     const { isOpen, onOpen, onClose } = useDisclosure()
   
@@ -11,6 +11,7 @@ export function CreateSession() {
     const [date, setDate] = useState('');
     const [time, setTime] = useState('');
     const [description, setDescription] = useState('');
+    const [value, onChange] = useState(new Date());
 
     const handleCreateSession = async()=>{
         await fetch('http://localhost:3003/sessions/',{
@@ -33,6 +34,7 @@ export function CreateSession() {
         }
     return (
       <>
+      <ChakraProvider>
       <Text
         m='6' textAlign={'center'} fontSize={'lg'} fontWeight={'bold'}>
       يمكنك ان تحدث فرقاً في حياة الآخرين وتشارك تجارب حياتك وتجلب الأمل للآخرين بضغطة واحدة لإنشاء جلسة
@@ -65,6 +67,7 @@ export function CreateSession() {
             <ModalBody pb={6}>
               <Image src='https://heypeers.com/assets/become-supporter-banner-a675576855998cd32b135684c5d9f3c47b2ca0e891e8f75b769951b1a7244836.png'/>
               <FormControl>
+
                 <Input ref={initialRef} 
                 textAlign={'right'}
                 placeholder='موضوع الجلسة'
@@ -110,7 +113,7 @@ export function CreateSession() {
               </Button>
             </ModalFooter>
           </ModalContent>
-        </Modal>
+        </Modal></ChakraProvider>
       </>
     )
   }

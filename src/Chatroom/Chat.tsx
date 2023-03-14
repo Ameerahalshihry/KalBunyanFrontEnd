@@ -17,7 +17,10 @@ import {
   ListItemProps,
   List,
   useFocusEffect,
+  Badge,
+  Kbd,
 } from "@chakra-ui/react";
+import { ChakraProvider } from "@chakra-ui/react";
 
 type Message = {
   user: string;
@@ -29,48 +32,54 @@ type ChatRoomProps = {
   }
 
 const ChatMessage = ({ user, text, isSent, ...rest }: Message & ListItemProps) => (
+  <ChakraProvider>
+
     <ListItem
+
       display="flex"
       justifyContent={isSent ? 'flex-start' : 'flex-end'}
+      marginLeft={isSent ? '80%' : '5%'}
+      marginRight={isSent ? '5%' : '80%'}
+
+      mt="5%"
       mb={4}
       {...rest}
     >
-    <Text fontWeight="bold">{user}</Text>
 
       <Box
         bg={isSent ? 'gray.100' : 'blue.200'}
         color={isSent ? 'black' : 'white'}
-        maxWidth="80%"
+        width="100%"
         p={2}
         borderRadius="md"
       >
-        {text}
+        {text}        <Text  fontWeight="bold">{user}</Text>
+
       </Box>
-    </ListItem>
+    </ListItem></ChakraProvider>
   );
 
 
 
   const ChatRoom = ({sessionId}:ChatRoomProps) => {
-  const [username, setUsername] = useState("Riyan");
+  const [username, setUsername] = useState(localStorage.getItem('username'));
   const [message, setMessage] = useState("");
   const [messages, setMessages] = useState<Message[]>([]);
   const [socket, setSocket] = useState<any>();
   const [leader, setLeader] = useState<string>();
   const [users, setUsers] = useState<string[]>([]);
+  const [allusers, setallusers] = useState<string[]>([]);
 
-
-
+  const [topic, setTopic] = useState<string[]>([]);
 
   const chatBoxRef = useRef<HTMLDivElement>(null);
-
-
   useEffect(() => {
 
-    const storedUsername = localStorage.getItem('username');
-    if (storedUsername !== null && storedUsername !== undefined) {
-      setUsername(storedUsername);
-    }
+  if( chatBoxRef.current)        chatBoxRef.current.scrollTo(0, chatBoxRef.current.scrollHeight);
+  },[messages])
+  useEffect(() => {
+
+  
 
     async function getSession(){
         const session = await fetch(`http://localhost:3000/session/${sessionId}`, {
@@ -81,7 +90,12 @@ const ChatMessage = ({ user, text, isSent, ...rest }: Message & ListItemProps) =
         });
         let res = await session.json();
         setLeader(res.Leader)
-
+         let usr:any[] = []
+         res.users.forEach((user:any)=>{
+              usr.push(user.username)
+         })
+         setallusers(usr)
+         setTopic(res.topic);
         localStorage.setItem('session', JSON.stringify(res))
         
     } 
@@ -94,20 +108,29 @@ const ChatMessage = ({ user, text, isSent, ...rest }: Message & ListItemProps) =
     setSocket(socket);
     socket.on('userJoined', (data:any) => {
         
-        const newUser = data.username;
+        const newUser = data.username;  
         setUsers(prevUsers => [...prevUsers, newUser]);
         console.log(users)
 
     })
     socket.on('userLeft', (data:any) => {
-        console.log(data.user)
+      console.log(users)
+        console.log(data.username)
         const leftUser = data.username;
         setUsers(prevUsers => prevUsers.filter(user => user !== leftUser));
+
+    })
+    socket.on('users', (data)=>{
+          
+          let values = [];
+          for(let k in data.users) {values.push(data.users[k])}
+        setUsers(values);
 
     })
     
     socket.on('connect', () => {
         console.log(socket.id);
+        username && users.push(username)
         socket.emit('join', {username: username, sessionId: sessionId})
 
       });
@@ -118,6 +141,10 @@ const ChatMessage = ({ user, text, isSent, ...rest }: Message & ListItemProps) =
           { user: data.user, isSent: data.isSent, text: data.text },
         ]);
       }
+
+
+      
+      
     });
 
     return () => {
@@ -143,22 +170,35 @@ const ChatMessage = ({ user, text, isSent, ...rest }: Message & ListItemProps) =
   };
 
   return (
+    <ChakraProvider>
     <Flex height="100vh">
-      <Box w="25%" bg="gray.100" p={4}>
+      <Box w="25%" bg="#E8E2DF" p={4}>
+      <Heading mb={4}>Topic</Heading>
+      {topic}
       <Heading mb={4}>Leader</Heading>
         {leader}
 
         <Heading mb={4}>Users</Heading>
         <Divider />
         <VStack mt={4} align="stretch" spacing={2}>
-                     {users.map((element, index) => (
-             <Text key={index}>{element}</Text> 
-                    ))}     
+                     {allusers.map((element, index) => (
+                      
+             <Text key = {index} fontSize='xl' fontWeight='bold'>
+              {users.includes(element)?  <Badge ml='1' fontSize='0.5em' colorScheme='green'>
+              Online
+             </Badge> :  <Badge ml='1' fontSize='0.5em' colorScheme='red'>
+              offline
+             </Badge>}
+             
+             {element}
+             
+           </Text> 
+             ))}     
         </VStack>
       </Box>
 
-      <Box  flex="1" overflow="auto" p={4} ref={chatBoxRef}>
-        <Box height={"70vh"} borderWidth="1px" borderRadius="lg" overflow="hidden">
+      <Box  flex="1"   p={4} >
+        <Box ref= {chatBoxRef} overflowY={"scroll"}  height={"75vh"} borderWidth="1px" borderRadius="lg" >
         <List>
 
         {messages.map((message, index) => (
@@ -183,12 +223,12 @@ const ChatMessage = ({ user, text, isSent, ...rest }: Message & ListItemProps) =
                   onChange={(event) => setMessage(event.target.value)}
                 />
               
-              <Button onClick={handleMessageSubmit} mt={2}>
+              <Button fontSize={"3xl"} color="whiteAlpha.800" colorScheme={"orange"} bgColor={"#103D3F"} onClick={handleMessageSubmit} mt={2}>
                 Send
               </Button>
           </Box>
         </Box>
-      </Flex>
+      </Flex></ChakraProvider>
     );
   };
   
