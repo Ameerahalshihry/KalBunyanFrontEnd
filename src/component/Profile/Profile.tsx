@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Box, Divider, Flex, HStack, Image, StackDivider, Text, Container } from "@chakra-ui/react";
+import { Box, Divider, Flex, HStack, Image, StackDivider, Text, Container, ChakraProvider } from "@chakra-ui/react";
 import { FaEnvelope, FaMapPin, FaSuitcase } from "react-icons/fa";
 import PastSessions from "./PastSessions";
 import UpComingSessions from "./UpComingSessions";
@@ -10,6 +10,7 @@ import SessionRequest from "./SessionRequest";
 const Profile = () => {
   const [role, setRole]= useState('Admin')
   return (
+    <ChakraProvider>
     <Flex
       bg="#E8E2DF"
       _dark={{ bg: "#3e3e3e" }}
@@ -62,7 +63,7 @@ const Profile = () => {
         {/* ----------------section1------------------------ */}
         <PersonalInfo />
         {/* try change condition to 'Admin' */}
-        {role != 'User' ? (
+        {role != 'Admin' ? (
           <Container>
         {/* ----------------section2------------------------ */}
         <PastSessions />
@@ -82,7 +83,7 @@ const Profile = () => {
         }
       </Flex>
     </Flex>
-        
+       </ChakraProvider> 
   );
 };
 
