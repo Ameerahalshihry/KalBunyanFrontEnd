@@ -12,11 +12,11 @@ import {
   Text,
   Image,
   useColorModeValue,
+  ChakraProvider
 } from '@chakra-ui/react';
 import leaves from '../assets/img/1.png'
 import { useState } from 'react';
 import { useNavigate } from "react-router-dom";
-import { ChakraProvider } from '@chakra-ui/provider';
 
 
 export default function LogIn() {
@@ -53,7 +53,6 @@ export default function LogIn() {
   return (
       <ChakraProvider>
     <Flex
-      minH={'100vh'}
       align={'center'}
       justify={'start'}
       bg={'#E8E2DF'}
