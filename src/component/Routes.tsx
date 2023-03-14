@@ -9,7 +9,7 @@ import Chat from '../Chatroom/Chat'
 const Routes_ = () => {
   return (
     <Routes>
-        <Route path='/' element={<CreateSession />}></Route>
+        <Route path='/' element={<Home />}></Route>
         <Route path='/sessions' element={<CreateSession />}></Route>
         <Route path='/login' element={<LogIn />}></Route>
         <Route path='/signUp' element={<SignUp />}></Route>

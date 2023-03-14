@@ -61,17 +61,18 @@ export default function SignUp() {
       >
         <Image src={leaves} width={'20%'} display={{base:"none", sm:"inline"}}></Image>
 
-      <Stack spacing={8} mx={'auto'} maxW={'xl'} py={12}>
+      <Stack spacing={8} mx={'auto'} maxW={'xl'}>
         <Stack align={'center'}>
           <Heading fontSize={'4xl'} color={'#103D3F'}>إنشاء حساب  </Heading>
         </Stack>
 
         <Box
+          w={{base:'335px', sm:'400px'}}
           rounded={'lg'}
           bg={'#f1edeb'}
           boxShadow={'xl'}
           px={20}
-          py={12}
+          py={10}
           textAlign={'right'}
           color={'#103D3F'}>
           <Stack spacing={6} >
@@ -100,7 +101,6 @@ export default function SignUp() {
             <FormControl id="role">
               <FormLabel textAlign={'right'}>تريد الانضمام معنا كـ</FormLabel>
               <Select placeholder='اختر' 
-              textAlign={'right'}
               variant='flushed'  
               focusBorderColor='#103D3F'
               onChange={(e)=> setRole(e.target.value)} >
