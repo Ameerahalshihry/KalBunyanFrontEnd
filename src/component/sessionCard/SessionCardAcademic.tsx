@@ -40,8 +40,7 @@ const SessionCardAcademic = () => {
                       </Flex>  
                     </CardHeader>
 
-                    <Stack bg='white' borderRadius={25} align='center'
-                    >
+                    <Stack bg='white' borderRadius={25} align='center' height={'full'} width={'full'}>
                     <CardBody textAlign='center' >
                       <Heading size='md'>{session.title}</Heading>
                       <Text py='2'>{session.discription}</Text>
@@ -90,7 +89,7 @@ const SessionCardAcademic = () => {
               </Flex>  
             </CardHeader>
             
-            <Stack bg='white' borderRadius={25} align='center' height={'full'}>
+            <Stack bg='white' borderRadius={25} align='center' height={'full'} width={'full'}>
               <CardBody textAlign='center' >
                 <Heading size='md'>هنا يمكنك طلب المساعدة، وإقتراح عنوان لجلسة تحدي جديدة ...</Heading>
                 <Input  mt={6} mb={0} variant='outline' boxShadow='md' focusBorderColor='#103D3F' placeholder='اكتب هنا' />
