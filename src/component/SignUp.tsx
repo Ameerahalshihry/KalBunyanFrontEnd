@@ -52,7 +52,10 @@ export default function SignUp() {
   navigate("/")
   }
   return (
+<<<<<<< HEAD
+=======
     <ChakraProvider>
+>>>>>>> 85fbe26f2adca8103f159c13f58449586d5f9826
     <Flex
       minH={'100vh'}
       align={'center'}
