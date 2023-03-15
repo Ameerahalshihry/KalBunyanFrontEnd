@@ -30,7 +30,7 @@ import BottomPage from './BottomPage';
           align={'center'}
           spacing={{ base: 8, md: 10 }}
           py={{ base: 20, md: 28 }}>        
-          <Image  mb="0" pb={"0"} src="/chatgptpic.png"></Image>
+          <Image  mb="0" pb={"0"} src="chatgptpic.png"></Image>
 
             <Heading
             color={'#103D3F'}
