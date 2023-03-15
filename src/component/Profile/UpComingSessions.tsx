@@ -9,15 +9,7 @@ const UpComingSessions = () => {
       align={'center'}
       direction={'column'}
       >
-      <Text
-        fontSize="3xl"
-        fontWeight="bold"
-        color="#103D3F"
-        _dark={{ color: "white" }}
-        p='4'
-    >
-        الجلسات القادمة
-    </Text>
+    
   {user.sessions.map((session)=>{
     return(
       <Box>

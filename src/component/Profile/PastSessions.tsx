@@ -9,15 +9,7 @@ const PastSessions = () => {
       align={'center'}
       direction={'column'}
     >
-      <Text
-        fontSize="3xl"
-        fontWeight="bold"
-        color="#103D3F"
-        _dark={{ color: "white" }}
-        p='4'
-    >
-        الجلسات السابقة
-    </Text>
+   
   {user.sessions.map((session)=>{
     return(
       <Box>

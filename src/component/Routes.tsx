@@ -7,11 +7,13 @@ import Sessions from './Sessions'
 import { CreateSession } from './CreateSession'
 import Chat from '../Chatroom/Chat'
 import ChatGPTPage from '../ChatGPTPage/ChatGPTpage'
+import Profile from './Profile/Profile'
 const Routes_ = () => {
   return (
     <Routes>
         <Route path='/' element={<Home />}></Route>
-        <Route path='/sessions' element={<CreateSession />}></Route>
+        <Route path='/sessions' element={<Sessions />}></Route>
+        <Route path='/profile' element={<Profile />}></Route>
         <Route path='/login' element={<LogIn />}></Route>
         <Route path='/signUp' element={<SignUp />}></Route>
         <Route path='/chat' element={<Chat sessionId='0f613b04-17a5-4fe4-b87d-3ca065be2cd7'/>}></Route>

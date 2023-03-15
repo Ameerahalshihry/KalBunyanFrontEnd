@@ -26,10 +26,10 @@ const PersonalInfo = () => {
           <Flex gap={3} color="#103D3F" _dark={{ color: "gray.200" }} 
           justify={'center'}
             >
+            <FaEnvelope size={20} />
             <Text fontSize="lg">
                 chris@buehner.com
             </Text>
-            <FaEnvelope size={20} />
           </Flex>
         </Box>
     </>

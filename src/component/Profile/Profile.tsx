@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Box, Divider, Flex, HStack, Image, StackDivider, Text, Container, ChakraProvider } from "@chakra-ui/react";
+import { Box, Divider, Flex, HStack, Image, StackDivider, Text, Container, ChakraProvider, SimpleGrid, Tab, TabList, TabPanel, TabPanels, Tabs } from "@chakra-ui/react";
 import { FaEnvelope, FaMapPin, FaSuitcase } from "react-icons/fa";
 import PastSessions from "./PastSessions";
 import UpComingSessions from "./UpComingSessions";
@@ -8,7 +8,7 @@ import Suggestions from "./Suggestions";
 import SessionRequest from "./SessionRequest";
 
 const Profile = () => {
-  const [role, setRole]= useState('Admin')
+  const [role, setRole]= useState('User')
   return (
     <ChakraProvider>
     <Flex
@@ -59,31 +59,36 @@ const Profile = () => {
             _dark={{ borderColor: "gray.200" }}
           />
         </Box>
-
-        {/* ----------------section1------------------------ */}
-        <PersonalInfo />
+      {/* ----------------section1------------------------ */}
+      <PersonalInfo />
         {/* try change condition to 'Admin' */}
         {role == 'Admin' ? (
-          <Container>
-        {/* ----------------section2------------------------ */}
-        <PastSessions />
-        <Divider borderColor={'gray'} />
-        {/* ----------------section3------------------------ */}
-        <UpComingSessions />
-        <Divider borderColor={'gray'} />
-
-        {/* ----------------section4------------------------ */}
-        <Suggestions />
-        <Divider borderColor={'gray'} />
-
-        </Container>
+          <SessionRequest />
         ):
-        /* ----------------section5------------------------ */
-        <SessionRequest />
+        <Container>
+          <Tabs size='md' isFitted variant='enclosed' color='#103D3F' >
+            <TabList mb='30px' >
+              <Tab _selected={{ bg:'#E6AE97', color:'#103D3F' }}>الجلسات السابقة</Tab>
+              <Tab _selected={{ bg:'#E6AE97', color:'#103D3F' }}>الجلسات القادمة</Tab>
+              <Tab _selected={{ bg:'#E6AE97', color:'#103D3F' }}> الجلسات المقترحة</Tab>
+            </TabList>
+            <TabPanels>
+              <TabPanel>
+                <PastSessions />
+              </TabPanel>
+              <TabPanel>
+                <UpComingSessions />
+              </TabPanel>
+              <TabPanel>
+                <Suggestions />
+              </TabPanel>
+            </TabPanels>
+          </Tabs>
+        </Container>
         }
       </Flex>
     </Flex>
-       </ChakraProvider> 
+    </ChakraProvider> 
   );
 };
 
