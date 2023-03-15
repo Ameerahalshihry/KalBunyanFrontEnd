@@ -11,19 +11,10 @@ const Suggestions = () => {
       direction={'column'}
       pb='6'
     > 
-      <Text
-        fontSize="3xl"
-        fontWeight="bold"
-        color="#103D3F"
-        _dark={{ color: "white" }}
-        pt='6'
-        >
-     الجلسات المقترحة
-      </Text>
       {user.suggestions.map(suggestion=> {
         return(
           <Text fontSize="lg">
-            {suggestion} -
+           - {suggestion} 
         </Text>
         )
       })}

@@ -51,14 +51,15 @@ export default function SignUp() {
   });
   }
   return (
+
     <ChakraProvider>
-      <Flex
-        minH={'100vh'}
-        align={'center'}
-        justify={'start'}
-        bg={'#E8E2DF'}
-        >
-          <Image src={leaves} width={'20%'} display={{base:"none", sm:"inline"}}></Image>
+    <Flex
+      minH={'100vh'}
+      align={'center'}
+      justify={'start'}
+      bg={'#E8E2DF'}
+      >
+        <Image src={leaves} width={'20%'} display={{base:"none", sm:"inline"}}></Image>
 
         <Stack spacing={8} mx={'auto'} maxW={'xl'}>
           <Stack align={'center'}>
