@@ -1,26 +1,4 @@
 import {
-<<<<<<< HEAD
-    ChakraProvider,
-    FormControl,
-    FormLabel,
-    FormErrorMessage,
-    FormHelperText,
-    Input,
-  } from '@chakra-ui/react'
-  
-const LogIn = () => {
-  return (
-    <ChakraProvider>
-      <FormControl>
-        <FormLabel>Email address</FormLabel>
-        <Input type='email' />
-        <FormLabel>Password</FormLabel>
-        <Input type='password' />
-      </FormControl>
-    </ChakraProvider> 
-  )
-}
-=======
   Flex,
   Box,
   FormControl,
@@ -38,7 +16,6 @@ const LogIn = () => {
 import leaves from '../assets/img/1.png'
 import { useState } from 'react';
 import { useNavigate } from "react-router-dom";
->>>>>>> dba38e26ccb91697272793735a2243a8d4333649
 
 
 export default function LogIn() {

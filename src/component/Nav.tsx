@@ -1,5 +1,5 @@
 import React from 'react';
-import { useNavigate, Link } from 'react-router-dom';
+import { useNavigate, NavLink } from 'react-router-dom';
 import logo from '../assets/logo.png'
 
 const Nav = () => {
@@ -26,9 +26,15 @@ const Nav = () => {
         <div className='navBar'>
         <img src={logo} alt="" onClick={HomePage}/>
           <ul>
-            <li><Link to='/'>الرئيسية</Link></li>
-            <li><Link to='/sessions'>الجلسات</Link></li>
-            <li><Link to='/contact'>التواصل</Link></li>
+            <li><NavLink to='/'
+              className={({ isActive }) => (isActive ? 'active' : '')}
+            >الرئيسية</NavLink></li>
+            <li><NavLink to='/sessions'
+              className={({ isActive }) => (isActive ? 'active' : '')}
+            >الجلسات</NavLink></li>
+            <li><NavLink to='/contact'
+              className={({ isActive }) => (isActive ? 'active' : '')}
+            >التواصل</NavLink></li>
           </ul>
         </div>
 
