@@ -10,17 +10,19 @@ const PastSessions = () => {
   useEffect(() => {
 
 
-    const sessions = async ()=>{await fetch('http://localhost:3000/session/profilesessions',{
-      method: "GET",
+    const sessions = async () =>{
+      
+      await fetch('http://localhost:3000/session/profile/sessions',{
+     method: "GET",
+
       headers:{ 
         "authorization": token,
           "Content-Type": "application/json"
       }
   }).then(res=>res.json())
   .then(data=>{
-    console.log(data)
-
     setSessions(data.sessions)
+
 
   });
 }
@@ -72,8 +74,7 @@ sessions()
             :موعد الجلسة
           </Text>
           <Text fontSize="lg">
-          {new Date(session.date).toDateString() }
-          {new Date(session.date).toTimeString() } 
+          {new Date(session.date).toDateString() }   {new Date(session.date).toTimeString().slice(0,5) } 
             
           
           </Text>

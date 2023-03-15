@@ -39,15 +39,19 @@ export default function LogIn() {
       })
   }).then(res=>res.json())
   .then(data=>{
-      console.log(data);
+      if(!data.Error){
       localStorage.setItem("token",data.token);
       console.log(localStorage.getItem("token"))
       localStorage.setItem("username",data.username);
+      localStorage.setItem("email",data.email);
+      navigate("/")
+
+    }
+
 
 
       
   });
-  navigate("/")
 
   }
   return (

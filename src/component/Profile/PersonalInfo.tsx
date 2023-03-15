@@ -20,7 +20,7 @@ const PersonalInfo = () => {
             color="#103D3F"
             _dark={{ color: "white" }}
           >
-            ريان الميمان
+            {localStorage.getItem('username')}
           </Text>
          
           <Flex gap={3} color="#103D3F" _dark={{ color: "gray.200" }} 
@@ -28,7 +28,7 @@ const PersonalInfo = () => {
             >
             <FaEnvelope size={20} />
             <Text fontSize="lg">
-                chris@buehner.com
+                {localStorage.getItem('email')}
             </Text>
           </Flex>
         </Box>

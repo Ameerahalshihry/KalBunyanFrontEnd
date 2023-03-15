@@ -19,9 +19,10 @@ const SessionCardHealthy = () => {
 
   const JoinSession = async (session:any):Promise<any>=>{
 
-        if(!localStorage.getItem('token')){navigate('/')}
+        if(!localStorage.getItem('token')){navigate('/login')}
 
       if(session.users.length==10){return;}
+      
       await fetch('http://localhost:3000/session/join',{
       method: "PUT",
       headers:{
