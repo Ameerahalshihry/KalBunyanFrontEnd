@@ -46,7 +46,9 @@ export default function LogIn() {
       localStorage.setItem("email",data.email);
       navigate("/")
 
+  
     }
+    
 
 
 

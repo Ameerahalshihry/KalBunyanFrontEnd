@@ -16,6 +16,22 @@ const SessionCardHealthy = () => {
   const navigate = useNavigate();
   const [sessions, setSessions] = useState<any[]>([]);
   const [token, setToken] = useState<any>(localStorage.getItem("token"));
+  const [suggestion, setSuggestion] = useState<any>();
+
+  async function createsuggestion(){
+
+      if(suggestion){
+    await fetch('http://localhost:3000/suggestions',{
+      method: "POST",
+      headers:{
+          "Content-Type": "application/json"
+      },
+      body:JSON.stringify({
+          topic: suggestion
+      })
+  })
+
+  }}
 
   const JoinSession = async (session:any):Promise<any>=>{
 
@@ -202,17 +218,18 @@ const SessionCardHealthy = () => {
             <Stack bg='white' borderRadius={25} align='center' height={'full'}>
               <CardBody textAlign='center' >
                 <Heading size='md'>هنا يمكنك طلب المساعدة، وإقتراح عنوان لجلسة تحدي جديدة ...</Heading>
-                <Input  mt={6} mb={0} variant='outline' boxShadow='md' focusBorderColor='#103D3F' placeholder='اكتب هنا' />
+                <Input onChange={(e)=> setSuggestion(e.target.value)}  mt={6} mb={0} variant='outline' boxShadow='md' focusBorderColor='#103D3F' placeholder='اكتب هنا' />
               </CardBody>
               <CardFooter>
                 <Button
+                      onClick={(e:any) => createsuggestion()}
                       variant='solid' 
                       bg='#103D3F'
                       color='white'
                       py='5'
                       px='5'
                       _hover={{ bg: '#103D3F' }}>
-                    طلب الإنضمام
+                        ارسل اقتراحك
                 </Button>
               </CardFooter>
             </Stack> 
