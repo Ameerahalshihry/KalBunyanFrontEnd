@@ -28,6 +28,7 @@ import {
 } from "@chakra-ui/react";
 import { ChakraProvider } from "@chakra-ui/react";
 import { element } from "prop-types";
+import { useParams } from "react-router-dom";
 
 type Message = {
   user: string;
@@ -77,8 +78,8 @@ const ChatMessage = ({ user, text, isSent, ...rest }: Message & ListItemProps) =
 
 
 
-  const ChatRoom = ({sessionId}:ChatRoomProps) => {
-  const [username, setUsername] = useState('');
+  const ChatRoom = () => {
+  const [username, setUsername] = useState(''); 
   const [message, setMessage] = useState("");
   const [messages, setMessages] = useState<Message[]>([]);
   const [socket, setSocket] = useState<any>();
@@ -87,7 +88,8 @@ const ChatMessage = ({ user, text, isSent, ...rest }: Message & ListItemProps) =
   const [allusers, setallusers] = useState<string[]>([]);
 
   const [topic, setTopic] = useState<string[]>([]);
-
+  const params = useParams();
+  const sessionId = params.id;
   const chatBoxRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
@@ -107,13 +109,16 @@ const ChatMessage = ({ user, text, isSent, ...rest }: Message & ListItemProps) =
           }
         });
         let res = await session.json();
-        setLeader(res.Leader)
+        console.log(res)
+
+        setLeader(res.session.Leader)
          let usr:any[] = []
-         res.users.forEach((user:any)=>{
+         console.log(res.users)
+         res.session.users.forEach((user:any)=>{
               usr.push(user.username)
          })
          setallusers(usr)
-         setTopic(res.topic);
+         setTopic(res.session.topic);
         localStorage.setItem('session', JSON.stringify(res))
         
     } 

@@ -16,7 +16,7 @@ const Routes_ = () => {
         <Route path='/profile' element={<Profile />}></Route>
         <Route path='/login' element={<LogIn />}></Route>
         <Route path='/signUp' element={<SignUp />}></Route>
-        <Route path='/chat' element={<Chat sessionId='0f613b04-17a5-4fe4-b87d-3ca065be2cd7'/>}></Route>
+        <Route path='/chat/:id' element={<Chat/>}></Route>
         <Route path='/bot' element={<ChatGPTPage />}></Route>
 
     </Routes>

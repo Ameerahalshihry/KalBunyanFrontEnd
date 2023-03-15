@@ -1,8 +1,40 @@
 import { Box, Flex, Text } from '@chakra-ui/react'
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import user from './user.json'
 
 const PastSessions = () => {
+  
+  const [token, setToken] = useState<any>(localStorage.getItem("token"));
+  const [sessions, setSessions] = useState<any[]>([]);
+
+  useEffect(() => {
+
+
+    const sessions = async ()=>{await fetch('http://localhost:3000/session/profilesessions',{
+      method: "GET",
+      headers:{ 
+        "authorization": token,
+          "Content-Type": "application/json"
+      }
+  }).then(res=>res.json())
+  .then(data=>{
+    console.log(data)
+
+    setSessions(data.sessions)
+
+  });
+}
+
+sessions()
+
+
+
+  },[])
+
+
+  
+
+
   return (
     <Flex
       justify={'center'}
@@ -10,7 +42,7 @@ const PastSessions = () => {
       direction={'column'}
     >
    
-  {user.sessions.map((session)=>{
+  {sessions && sessions.map((session)=>{
     return(
       <Box>
 
@@ -40,7 +72,10 @@ const PastSessions = () => {
             :موعد الجلسة
           </Text>
           <Text fontSize="lg">
-            {session.date}
+          {new Date(session.date).toDateString() }
+          {new Date(session.date).toTimeString() } 
+            
+          
           </Text>
         </Flex>
 
@@ -55,7 +90,7 @@ const PastSessions = () => {
             :داعم الجلسة
           </Text>
           <Text fontSize="lg" pb='5'>
-            {session.supporter}
+            {session.Leader}
           </Text>
         </Flex>
       </Box>

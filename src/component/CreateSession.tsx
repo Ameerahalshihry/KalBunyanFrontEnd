@@ -1,4 +1,4 @@
-import { useDisclosure, Button, Modal, ModalOverlay, ModalContent, ModalHeader, ModalCloseButton, ModalBody, FormControl, FormLabel, Input, ModalFooter, Text , Image, ChakraProvider, Box, Textarea} from "@chakra-ui/react"
+import { useDisclosure, Button, Modal, ModalOverlay, ModalContent, ModalHeader, ModalCloseButton, ModalBody, FormControl, FormLabel, Input, ModalFooter, Text , Image, ChakraProvider, Box, Textarea, Select} from "@chakra-ui/react"
 import React, { useState } from "react"
 import DateTimePicker from 'react-datetime-picker';
 
@@ -11,6 +11,8 @@ export function CreateSession() {
   
     const [topic, setTopic] = useState('');
     const [date, setDate] = useState<any>();
+    const [type, setType] = useState<any>();
+
     const [description, setDescription] = useState('');
     const [token, setToken] = useState<any>(localStorage.getItem("token"));
 
@@ -28,6 +30,7 @@ export function CreateSession() {
                 topic: topic,
                 date:date,
                 description:description,
+                type: type
 
 
             })
@@ -35,6 +38,9 @@ export function CreateSession() {
         .then(data=>{
             console.log(data)
         });
+          onClose()
+              
+
         }
     return (
       <>
@@ -56,6 +62,7 @@ export function CreateSession() {
         >إنشاء جلسة</Button>
   
         <Modal
+        
           initialFocusRef={initialRef}
           finalFocusRef={finalRef}
           isOpen={isOpen}
@@ -87,6 +94,21 @@ export function CreateSession() {
                 focusBorderColor='#103D3F'
                 onChange={(e)=> setDescription(e.target.value)}/>
               </FormControl>
+              <FormControl>
+
+              <Select placeholder='اختر' 
+              variant='flushed'  
+              focusBorderColor='#103D3F'
+              onChange={(e)=> setType(e.target.value)} >
+                  <option value="academic">دراسي</option>
+                  <option value="professional">مهني</option>
+                  <option value="social">إجتماعي</option>
+                  <option value="health">صحي</option>
+
+              </Select>
+              </FormControl>
+              
+
               <FormControl mt={4}>
                 <FormLabel color='gray.500'>موعد الجلسة</FormLabel>
                 <Box style={{direction:"ltr"}}>

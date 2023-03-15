@@ -15,6 +15,7 @@ const Nav = () => {
     navigate("/profile");
   }
   const SingOut =()=>{
+    localStorage.clear()
     navigate("/");
   }
 
@@ -39,14 +40,14 @@ const Nav = () => {
         </div>
 
         <>{(
-        localStorage.getItem('name') == null ?
+        localStorage.getItem('token') == null ?
           <div className='btnNav'>
             <button onClick={SignUp}>تسجيل الدخول</button>
           </div>
           :
           <div className='btnNav'>
             <a onClick={Profile}>
-              <p>مرحباً, {localStorage.getItem('name')}</p>
+              <p>مرحباً, {localStorage.getItem('username')}</p>
             </a>
             <button onClick={SingOut}>تسجيل الخروج</button>
           </div>

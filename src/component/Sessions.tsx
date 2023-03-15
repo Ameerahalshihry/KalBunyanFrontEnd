@@ -14,7 +14,7 @@ const Sessions = () => {
 
   const navigate = useNavigate()
   const ChatGPT =()=>{
-    navigate("/ChatGPT");   
+    navigate("/bot");   
   }
   const scrollFun =()=>{
     window.scrollTo({
