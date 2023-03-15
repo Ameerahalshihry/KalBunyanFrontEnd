@@ -9,21 +9,28 @@ import {
     Button,
     Icon,
     IconProps,
+    useMediaQuery,
   } from '@chakra-ui/react';
+import { useState } from 'react';
+import Sidebar from '../sidebar/Sidebar';
 import BottomPage from './BottomPage';
   
   export default function ChatGPTPage() {
+    const [isLargerThan1300] = useMediaQuery("(min-width: 1300px)");
+
+
     return (
       <ChakraProvider>
-        <div style={{backgroundColor:"#E8E2DF"}}>
-        <Container    maxW={'5xl'}>
-          <Stack
-          mt="0"
-            textAlign={'center'}
-            align={'center'}
-            spacing={{ base: 8, md: 10 }}
-            py={{ base: 20, md: 28 }}>        
-            <Image  mb="0" pb={"0"} src="/chatgptpic.png"></Image>
+
+      <div style={{backgroundColor:"#E8E2DF"}}>
+      <Container    maxW={'5xl'}>
+        <Stack
+        mt="0"
+          textAlign={'center'}
+          align={'center'}
+          spacing={{ base: 8, md: 10 }}
+          py={{ base: 20, md: 28 }}>        
+          <Image  mb="0" pb={"0"} src="/chatgptpic.png"></Image>
 
             <Heading
             color={'#103D3F'}

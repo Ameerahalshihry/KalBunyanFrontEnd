@@ -15,8 +15,10 @@ import {
   Image,
   useColorModeValue,
   Select,
+  ChakraProvider,
 } from '@chakra-ui/react';
 import leaves from '../assets/img/1.png'
+
 
 
 export default function SignUp() {
@@ -28,7 +30,7 @@ export default function SignUp() {
   const navigate = useNavigate();
 
   const handleSingUp = async () => {
-    await fetch('http://localhost:3003/users/',{
+    await fetch('http://localhost:3000/user/create',{
       method: "POST",
       headers:{
           "Content-Type": "application/json"
@@ -42,12 +44,18 @@ export default function SignUp() {
   }).then(res=>res.json())
   .then(data=>{
       console.log(data);
-      localStorage.setItem("token",data.token);
+      localStorage.setItem("token", data.token);
       console.log(localStorage.getItem("token"))
+      localStorage.setItem("username",data.username);
+
   });
   navigate("/")
   }
   return (
+<<<<<<< HEAD
+=======
+    <ChakraProvider>
+>>>>>>> 85fbe26f2adca8103f159c13f58449586d5f9826
     <Flex
       minH={'100vh'}
       align={'center'}
@@ -56,17 +64,18 @@ export default function SignUp() {
       >
         <Image src={leaves} width={'20%'} display={{base:"none", sm:"inline"}}></Image>
 
-      <Stack spacing={8} mx={'auto'} maxW={'xl'} py={12}>
+      <Stack spacing={8} mx={'auto'} maxW={'xl'}>
         <Stack align={'center'}>
           <Heading fontSize={'4xl'} color={'#103D3F'}>إنشاء حساب  </Heading>
         </Stack>
 
         <Box
+          w={{base:'335px', sm:'400px'}}
           rounded={'lg'}
           bg={'#f1edeb'}
           boxShadow={'xl'}
           px={20}
-          py={12}
+          py={10}
           textAlign={'right'}
           color={'#103D3F'}>
           <Stack spacing={6} >
@@ -91,10 +100,10 @@ export default function SignUp() {
                 focusBorderColor='#103D3F'
                 onChange={(e)=> setPassword(e.target.value)}/>
             </FormControl>
+            
             <FormControl id="role">
               <FormLabel textAlign={'right'}>تريد الانضمام معنا كـ</FormLabel>
               <Select placeholder='اختر' 
-              textAlign={'right'}
               variant='flushed'  
               focusBorderColor='#103D3F'
               onChange={(e)=> setRole(e.target.value)} >
@@ -121,6 +130,6 @@ export default function SignUp() {
         </Box>
       </Stack>
       <Image src={leaves} width={'20%'} display={{base:"none", sm:"inline"}}></Image>
-    </Flex>
+    </Flex></ChakraProvider>
   );
 }

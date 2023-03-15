@@ -17,21 +17,23 @@ import {
     FiBriefcase,
     FiSettings
 } from 'react-icons/fi'
-import { IoPawOutline } from 'react-icons/io5'
+// import { IoPawOutline } from 'react-icons/io5'
 import NavItem from './Navitem'
 
 export default function Sidebar() {
     const [navSize, changeNavSize] = useState("large")
     return (
         <ChakraProvider>
-            <Flex
+
+        <Flex
+        bgColor={"gray.200"}
             pos="fixed"
             top="50%"
             left="5"
             transform="translateY(-50%)"
             boxShadow="0 4px 12px 0 rgba(0, 0, 0, 0.05)"
             borderRadius={navSize == "small" ? "15px" : "30px"}
-            w={navSize == "small" ? "75px" : "200px"}
+            w={navSize == "small" ? "70px" : "200px"}
             flexDir="column"
             justifyContent="center"
             >
@@ -51,14 +53,14 @@ export default function Sidebar() {
                             if (navSize == "small")
                                 changeNavSize("large")
 
-                            else
-                                changeNavSize("small")
-                        } } aria-label={''}                />
-                    <NavItem navSize={navSize} icon={FiHome} title="Dashboard" description="Your Sessions" />
-                    <NavItem navSize={navSize} icon={FiCalendar} title="Sessions" active />
-                    <NavItem navSize={navSize} icon={FiUser} title="Chat" />
-                    
-                </Flex>
+                        else
+                            changeNavSize("small")
+                    } } aria-label={''}                />
+                <NavItem navSize={navSize} icon={FiHome} title="Profile" description="Your profile" />
+                <NavItem navSize={navSize} icon={FiCalendar} title="Sessions"  />
+                <NavItem navSize={navSize} icon={FiUser} title="Chat" />
+                
+            </Flex>
 
                 <Flex
                     p="5%"

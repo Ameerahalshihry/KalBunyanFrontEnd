@@ -1,4 +1,4 @@
-
+import Sidebar from '../sidebar/Sidebar'
 import React, { useState } from 'react';
 
 import { useNavigate } from 'react-router-dom';
@@ -7,6 +7,7 @@ import img_header from '../assets/img_header.png';
 import plan from '../assets/plan.png'
 import plant from '../assets/plant.png'
 import whyUs from '../assets/whyUs.png'
+import Profile from './Profile/Profile';
 
 const Home = () => {
   const navigate = useNavigate()
@@ -15,12 +16,6 @@ const Home = () => {
   }
 
   return (
-    // <div style={{"minHeight": "90vh"}} >
-    //   <br/>
-    //   <a href="./LogIn" ><button> Log In</button></a>
-    //   <br/>
-    //   <a href="./SignUp" ><button> Sign Up</button></a>
-    // </div>
     <>
     {/*----------HEADER----------*/}
       <header className='headerContainer'>

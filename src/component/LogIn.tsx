@@ -12,6 +12,7 @@ import {
   Text,
   Image,
   useColorModeValue,
+  ChakraProvider
 } from '@chakra-ui/react';
 import leaves from '../assets/img/1.png'
 import { useState } from 'react';
@@ -27,7 +28,7 @@ export default function LogIn() {
 
 
   const handleLogIn = async () => {
-    await fetch('http://localhost:3003/users/',{
+    await fetch('http://localhost:3000/user/login',{
       method: "POST",
       headers:{
           "Content-Type": "application/json"
@@ -35,27 +36,30 @@ export default function LogIn() {
       body:JSON.stringify({
           email: email,
           password:password,
-          token:localStorage.getItem("token")
       })
   }).then(res=>res.json())
   .then(data=>{
       console.log(data);
       localStorage.setItem("token",data.token);
       console.log(localStorage.getItem("token"))
+      localStorage.setItem("username",data.username);
+
+
+      
   });
   navigate("/")
 
   }
   return (
-
+      <ChakraProvider>
     <Flex
-      minH={'100vh'}
+      minH={{base:'80vh', md:'80vh' }}
       align={'center'}
-      justify={'start'}
+      justify={'center'}
       bg={'#E8E2DF'}
       >
         <Image src={leaves} width={'20%'} display={{base:"none", sm:"inline"}}></Image>
-      <Stack spacing={8} mx={'auto'} maxW={'xl'} py={12}>
+      <Stack mx={'auto'} maxW={'xl'} spacing={14}>
         <Stack align={'center'}>
           <Heading fontSize={'4xl'} color={'#103D3F'}>تسجيل الدخول</Heading>
         </Stack>
@@ -63,10 +67,11 @@ export default function LogIn() {
           rounded={'lg'}
           bg={'#f1edeb'}
           boxShadow={'xl'}
-          p={20}
+          px={20}
+          py={10}
           textAlign={'right'}
           color={'#103D3F'}>
-          <Stack spacing={4} >
+          <Stack spacing={2} >
             <FormControl id="email">
               <FormLabel textAlign={'right'}>البريد الإلكتروني</FormLabel>
               <Input type="email"
@@ -81,7 +86,7 @@ export default function LogIn() {
               focusBorderColor='#103D3F'
               onChange={(e)=> setPassword(e.target.value)}/>
             </FormControl>
-            <Stack spacing={10}>
+            <Stack spacing={8}>
               <Stack>
                 <Link>هل نسيت كلمة المرور؟</Link>
               </Stack>
@@ -99,6 +104,6 @@ export default function LogIn() {
         </Box>
       </Stack>
       <Image src={leaves} width={'20%'} display={{base:"none", sm:"inline"}}></Image>
-    </Flex>
+    </Flex></ChakraProvider>  
   );
 }
