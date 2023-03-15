@@ -6,7 +6,7 @@ import { ChakraProvider,
   CardHeader,
   CardBody, CardFooter, Stack, Image, Heading, Text,Button, ListItem, List, Input, Icon, Center, Flex, Spacer} from '@chakra-ui/react'
 import { BsCalendar4Week, IoTimeOutline, VscAdd } from 'react-icons/all'
-import plant_2 from '/Users/fatmah/Desktop/KalBunyanFrontEnd/src/assets/plant_2.png'
+import plant_2 from '../../assets/plant_2.png'
 import sessions from './sessions.json'
 
 const SessionCardOccupational = () => {
