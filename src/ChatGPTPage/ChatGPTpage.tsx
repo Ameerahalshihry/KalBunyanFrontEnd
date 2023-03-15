@@ -28,8 +28,8 @@ import BottomPage from './BottomPage';
         mt="0"
           textAlign={'center'}
           align={'center'}
-          spacing={{ base: 8, md: 10 }}
-          py={{ base: 20, md: 28 }}>        
+          spacing={{ base: 8, md: 8 }}
+          py={{ base: 20, md: 5 }}>        
           <Image  mb="0" pb={"0"} src="chatgptpic.png"></Image>
 
             <Heading
@@ -37,26 +37,27 @@ import BottomPage from './BottomPage';
               fontWeight={600}
               fontSize={{ base: '3xl', sm: '4xl', md: '6xl' }}
               lineHeight={'110%'}>
-              Get help {' '}
+              احصل على الدعم والمساعدة  {' '}
               <Text as={'span'} color={'#D38E72'}>
-                Anonymously
+                ب خصوصية تامة
               </Text>
             </Heading>
             <Text color={'gray.500'} maxW={'3xl'}>
-              Get help from a chat bot designed to listen to you and give you advice - powered by GPT 3.5. 
-              We never save your conversations, everything is private. 
+            احصل على المساعدة من روبوت محادثة مصمم للاستماع إليك وتقديم النصيحة - مدعوم من GPT 3.5. نحن لا نحفظ محادثاتك أبدًا ، كل شيء خاص.
             </Text>
               <Button
-                rounded={'full'}
                 px={6}
-                colorScheme={'orange'}
                 bg={'#103D3F'}
-                _hover={{ bg: 'orange.500' }} onClick={() =>
+                color={'white'}
+                  _hover={{
+                    bg: '#ABBEA9',
+                  }}
+                 onClick={() =>
                   document.getElementById('chatgpt-section')?.scrollIntoView({
                     behavior: 'smooth',
                   })
                 }>
-                Get started
+                اضفط هنا
               </Button>
             
             <Flex  justifyContent={"center"} w={'full'}>

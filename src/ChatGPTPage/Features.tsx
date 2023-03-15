@@ -38,23 +38,23 @@ export default function SimpleThreeColumns() {
             <SimpleGrid columns={{ base: 1, md: 3 }} spacing={10}>
               <Feature
                 icon={<Icon as={FcMindMap} w={10} h={10} />}
-                title={'Support'}
+                title={'الدعم'}
                 text={
-                  "You can ask it a wide variety of questions, as long as they're relevant to the bot's job"
+                  "يمكنك طرح مجموعة متنوعة من الأسئلة عليه ، طالما أنها ذات صلة بوظيفة الروبوت"
                 }
               />
               <Feature
                 icon={<Icon as={FcLock} w={10} h={10} />}
-                title={'Confidentiality'}
+                title={'الخصوصية والسرية'}
                 text={
-                  'We take your privacy seriously and ensure that all conversations and personal information are kept confidential.'
+                  "نحن نأخذ خصوصيتك على محمل الجد ونضمن الحفاظ على سرية جميع المحادثات والمعلومات الشخصية."
                 }
               />
               <Feature
                 icon={<Icon as={FcVoicePresentation} w={10} h={10} />}
-                title={'Example'}
+                title={'مثال'}
                 text={
-                  "'I'm struggling to balance my work and personal life. How can I create a better balance?'" 
+                  'أنا أعاني من أجل تحقيق التوازن بين عملي وحياتي الشخصية. كيف يمكنني خلق توازن أفضل؟'
                                }
               />
             </SimpleGrid>

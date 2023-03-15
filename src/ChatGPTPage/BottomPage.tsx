@@ -37,12 +37,12 @@ function BottomPage() {
       <ChakraProvider>
 
       <Box width="100% "   minHeight="100vh" display="flex" flexDirection="column"  alignItems="center">
-        <Box textAlign="center" py={4}>
-          <Heading>Life Coach Bot</Heading>
+        <Box textAlign="center" mt={'150px'}>
+          <Heading> روبوت داعم لتخطي تحديات الحياة</Heading>
         </Box>
         <Box flex="1" display="flex" justifyContent="center" alignItems="center">
           <Container maxW="80vw">
-            <Box mb={20}>
+            <Box mt={10}>
               <Box maxWidth={"100%"} >
                 <code style={{ whiteSpace: "pre-line", fontSize:"1.5em", wordWrap: "break-word" }}>
                   {response ? (
@@ -65,13 +65,13 @@ function BottomPage() {
             </Box>
           </Container>
         </Box>
-        <Box minWidth={"100%"} pb={4}>
+        <Box minWidth={"100%"} pb={6}>
           <Container   >
             <Stack  direction="row" align="center">
               <Input  size = "lg"
                width="100%" 
                 bgColor={"white"}
-                placeholder="Type your message here"
+                placeholder="اكتب هنا سؤالك"
                 flex="1"
                 type="text"
                 value={prompt}
@@ -81,9 +81,12 @@ function BottomPage() {
                   bg="#103D3F"
                   onClick={handleSubmit}
                   ml={4}
-                  colorScheme="orange"
+                  color={'white'}
+                  _hover={{
+                    bg: '#ABBEA9',
+                  }}
                 >
-                  Send
+                  إرسال
                 </Button>
               </Stack>
             </Container>
