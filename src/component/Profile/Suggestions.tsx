@@ -47,7 +47,7 @@ const Suggestions = () => {
         )
       })}
       {/* try change condition to User or Admin */}
-      {user.role == 'Supporter'? (
+      {user.role == 'SUPPORTER'? (
 
         <CreateSession/>
       ):

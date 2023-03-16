@@ -17,7 +17,6 @@ const Routes_ = () => {
         <Route path='/signUp' element={<SignUp />}></Route>
         <Route path='/chat/:id' element={<Chat/>}></Route>
         <Route path='/bot' element={<ChatGPTPage />}></Route>
-
     </Routes>
   )
 }

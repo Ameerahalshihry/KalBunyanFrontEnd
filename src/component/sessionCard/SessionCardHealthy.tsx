@@ -10,8 +10,9 @@ import plant_2 from '../../assets/plant_2.png'
 import sessions from './sessions.json'
 import { useNavigate } from 'react-router'
 
-const SessionCardHealthy = () => {
+import swal from 'sweetalert2'
 
+const SessionCardHealthy = () => {
 
   const navigate = useNavigate();
   const [sessions, setSessions] = useState<any[]>([]);
@@ -19,6 +20,20 @@ const SessionCardHealthy = () => {
   const [suggestion, setSuggestion] = useState<any>();
 
   async function createsuggestion(){
+
+    swal.fire({
+      icon: 'success',
+      text: "تم إرسال إقتراحك بنجاح!",
+      iconColor: '#221409',
+      showCloseButton: true,
+      focusConfirm: false,
+      background: '#e7c6b9',
+      confirmButtonColor: '#103d3f',
+      confirmButtonText: 'OK',
+    }).then(()=>{
+      document.documentElement.scrollTop = 0; 
+      location.reload();
+    })
 
       if(suggestion){
     await fetch('http://localhost:3000/suggestions',{
@@ -30,15 +45,11 @@ const SessionCardHealthy = () => {
           topic: suggestion
       })
   })
-
   }}
 
   const JoinSession = async (session:any):Promise<any>=>{
-
         if(!localStorage.getItem('token')){navigate('/login')}
-
       if(session.users.length==10){return;}
-      
       await fetch('http://localhost:3000/session/join',{
       method: "PUT",
       headers:{
@@ -50,62 +61,37 @@ const SessionCardHealthy = () => {
       })
   }).then(res=>res.json())
   .then(data=>{
-
     let test:any[]=[]
     data.sessions.forEach((session:any)=>{
-
       if(session.type=="health"){
-
         test.push(session)
       }
     })
-
     setSessions(test)
-      
-
   });
-
-    
-
   }
 
-
-  
-  
   useEffect(() => {
-
       fetch('http://localhost:3000/session',{
       method: "GET",
       headers:{
-      
           "Content-Type": "application/json"
-          
       }
   }).then(res=>res.json())
   .then(data=>{
     console.log(data)
     let test:any[]=[]
     data.sessions.forEach((session:any)=>{
-
       if(session.type=="health"){
-
         test.push(session)
       }
     })
-
-    setSessions(test)
-      
-  })
-
-
-
-
-
-    
+    setSessions(test)  
+  })   
     console.log(sessions)
-
   },[])
 
+//----------------------------------------------------------------------------
 
   return (
     <ChakraProvider>
@@ -120,6 +106,7 @@ const SessionCardHealthy = () => {
                   bg='#E6AE9788'
                   mb='20'
                   borderRadius={25}
+                  maxWidth='450px'
                   >
                   <Stack align='center'
                   >
@@ -143,14 +130,9 @@ const SessionCardHealthy = () => {
                       <Text py='2'>{session.description}</Text>
                     </CardBody>
                     <CardFooter>
-                      {(session.users.map((ele: { username: string }) => ele.username).includes(localStorage.getItem('username')))
-
-                      
-                      
-                      ?
-                      
-                      <Button
-      
+                      {(session.users.map((ele: { username: string }) => ele.username).includes(localStorage.getItem('username')))    
+                      ?                    
+                      <Button    
                       onClick={(e:any) => navigate('/chat/'+session.id)}
                       variant='solid' 
                       bg='#103D3F'
@@ -159,15 +141,10 @@ const SessionCardHealthy = () => {
                       px='5'
                       _hover={{ bg: '#103D3F' }}>
                           تم الإنضمام
-                      </Button>
-                      
-                      : 
-                      
-                      
-                      <Button
-                      
+                      </Button>                     
+                      :                     
+                      <Button                     
                       onClick={(e:any) => JoinSession(session)}
-
                       variant='solid' 
                       bg='#103D3F'
                       color='white'
@@ -175,15 +152,11 @@ const SessionCardHealthy = () => {
                       px='5'
                       _hover={{ bg: '#103D3F' }}>
                           طلب الإنضمام
-                      </Button>
-                      
-                      
-                      }
-                    
+                      </Button>                     
+                      }                   
                     </CardFooter>
 
-                  </Stack>
-                    
+                  </Stack>                   
                   </Stack>
               </Card>  
         )})   
@@ -197,6 +170,7 @@ const SessionCardHealthy = () => {
             bg='#E6AE9788'
             mb='20'
             borderRadius={25}
+            maxWidth='450px'
             >
           <Stack align='center'
           >

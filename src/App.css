@@ -9,6 +9,14 @@ html, body {
   direction:rtl;
 }
 
+#someselector {
+  all: revert;
+}
+
+#someselector * {
+  all: revert
+}
+
 /*-------------------------------NAV-------------------------------*/
 nav {
   background-color: #E8E2DF;
@@ -39,8 +47,9 @@ nav {
 }
 .navBar a {
   text-decoration: none;
-  color: #ABBEA9;
+  color: #7c8b7a;
   font-size: 20px;
+  font-weight: 900;
 }
 .navBar ul {
   display: flex;
@@ -80,10 +89,10 @@ nav {
   margin: 0;
   cursor: pointer;
   font-size: 22px;
-  color: white;
+  color: #103d3f;
 }
 .btnNav p:hover{
-  color: rgba(255, 255, 255, 0.8);
+  color: #7c8b7a;
 }
 
 /*-------------------------------FOOTER-------------------------------*/
