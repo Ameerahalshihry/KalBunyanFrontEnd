@@ -10,7 +10,7 @@ import Profile from './Profile/Profile'
 const Routes_ = () => {
   return (
     <Routes>
-        <Route path='/' element={<Profile />}></Route>
+        <Route path='/' element={<Home />}></Route>
         <Route path='/sessions' element={<Sessions />}></Route>
         <Route path='/profile' element={<Profile />}></Route>
         <Route path='/login' element={<LogIn />}></Route>
