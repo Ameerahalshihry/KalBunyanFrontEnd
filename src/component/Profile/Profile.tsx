@@ -8,7 +8,8 @@ import Suggestions from "./Suggestions";
 import SessionRequest from "./SessionRequest";
 
 const Profile = () => {
-  const [role, setRole]= useState('User')
+  const [role, setRole]= useState<any>(localStorage.getItem("role"));
+  
   return (
     <ChakraProvider>
     <Flex
@@ -62,9 +63,10 @@ const Profile = () => {
       {/* ----------------section1------------------------ */}
       <PersonalInfo />
         {/* try change condition to 'Admin' */}
-        {role == 'Admin' ? (
+        {role == 'ADMIN' ? (
           <SessionRequest />
         ):
+
         <Container>
           <Tabs size='md' isFitted variant='enclosed' color='#103D3F' >
             <TabList mb='30px' >

@@ -72,13 +72,13 @@ const SessionRequest = () => {
               color={'white'}
               _hover={{
                 bg: '#ABBEA9',
-              }}>Accept</Button>
+              }}>قبول</Button>
             <Button
               bg={'#103D3F'}
               color={'white'}
               _hover={{
                 bg: '#ABBEA9',
-              }}>Reject</Button>
+              }}>رفض</Button>
             </Flex>
             </>
           )

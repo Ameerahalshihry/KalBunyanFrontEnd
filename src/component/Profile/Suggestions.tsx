@@ -3,7 +3,8 @@ import React, { useEffect, useState } from 'react'
 import user from './user.json'
 import { CreateSession } from '../CreateSession'
 const Suggestions = () => {
-
+  const [role, setRole]= useState<any>(localStorage.getItem("role"));
+  
   const [suggestions, setSuggestions] = useState<any>()
   useEffect(() => {
 
@@ -21,15 +22,6 @@ const Suggestions = () => {
     }
   )
 
-    
-
-
-
-
-
-
-  
-
 },[])
   return (
     <>
@@ -42,17 +34,17 @@ const Suggestions = () => {
       {suggestions && suggestions.map((suggestion:any)=> {
         return(
           <Text fontSize="lg">
-           - {suggestion.topic} 
+            - {suggestion.topic} 
         </Text>
         )
       })}
       {/* try change condition to User or Admin */}
-      {user.role == 'Supporter'? (
+      {role == 'SUPPORTER'? (
 
         <CreateSession/>
       ):
       null}
-        
+      
 </Flex>
 </>
   )
