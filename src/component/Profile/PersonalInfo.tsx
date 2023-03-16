@@ -1,6 +1,6 @@
 import { Flex, Box, Text } from '@chakra-ui/react'
 import React from 'react'
-import { FaEnvelope } from 'react-icons/fa'
+import { CiMail } from 'react-icons/all'
 
 const PersonalInfo = () => {
   return (
@@ -26,7 +26,7 @@ const PersonalInfo = () => {
           <Flex gap={3} color="#103D3F" _dark={{ color: "gray.200" }} 
           justify={'center'}
             >
-            <FaEnvelope size={20} />
+            <CiMail size={20} />
             <Text fontSize="lg">
                 {localStorage.getItem('email')}
             </Text>

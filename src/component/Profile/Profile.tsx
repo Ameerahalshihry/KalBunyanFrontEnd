@@ -72,7 +72,12 @@ const Profile = () => {
             <TabList mb='30px' >
               <Tab _selected={{ bg:'#E6AE97', color:'#103D3F' }}>الجلسات السابقة</Tab>
               <Tab _selected={{ bg:'#E6AE97', color:'#103D3F' }}>الجلسات القادمة</Tab>
-              <Tab _selected={{ bg:'#E6AE97', color:'#103D3F' }}> الجلسات المقترحة</Tab>
+              {
+                role == 'SUPPORTER' 
+                ?
+                <Tab _selected={{ bg:'#E6AE97', color:'#103D3F' }}> الجلسات المقترحة</Tab>
+                : null
+              }  
             </TabList>
             <TabPanels>
               <TabPanel>
@@ -81,9 +86,14 @@ const Profile = () => {
               <TabPanel>
                 <UpComingSessions />
               </TabPanel>
-              <TabPanel>
-                <Suggestions />
-              </TabPanel>
+              {
+                role == 'SUPPORTER' 
+                ?
+                <TabPanel>
+                  <Suggestions />
+                </TabPanel>
+                : null
+              }  
             </TabPanels>
           </Tabs>
         </Container>

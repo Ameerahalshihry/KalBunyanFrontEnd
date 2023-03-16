@@ -1,19 +1,19 @@
-import { Flex, Text } from '@chakra-ui/react'
+import { Flex, Text, Icon, Heading } from '@chakra-ui/react'
 import React, { useEffect, useState } from 'react'
-import user from './user.json'
+import { BsLightbulb } from 'react-icons/all';
+
 import { CreateSession } from '../CreateSession'
+
+
 const Suggestions = () => {
-  const [role, setRole]= useState<any>(localStorage.getItem("role"));
   
   const [suggestions, setSuggestions] = useState<any>()
   useEffect(() => {
 
     fetch('http://localhost:3000/session/suggestions/all',{
     method: "GET",
-    headers:{
-    
-        "Content-Type": "application/json"
-        
+    headers:{ 
+        "Content-Type": "application/json"    
     }
 }).then(res=>res.json())
 .then(data=>{
@@ -31,20 +31,15 @@ const Suggestions = () => {
       direction={'column'}
       pb='6'
     > 
+      <Heading size='md'>هنا إقتراحات لجلسات تم طرحها من قبل المحتاجين لدعمك:</Heading>
       {suggestions && suggestions.map((suggestion:any)=> {
         return(
           <Text fontSize="lg">
-            - {suggestion.topic} 
+            <Icon as={BsLightbulb} w={4} h={4} /> {suggestion.topic} 
         </Text>
         )
       })}
-      {/* try change condition to User or Admin */}
-      {role == 'SUPPORTER'? (
-
-        <CreateSession/>
-      ):
-      null}
-      
+      <CreateSession/>     
 </Flex>
 </>
   )

@@ -2,6 +2,8 @@ import { useDisclosure, Button, Modal, ModalOverlay, ModalContent, ModalHeader, 
 import React, { useState } from "react"
 import DateTimePicker from 'react-datetime-picker';
 
+import swal from 'sweetalert2'
+
 export function CreateSession() {
     const { isOpen, onOpen, onClose } = useDisclosure()
     const [x, setX] = useState(new Date());
@@ -39,8 +41,19 @@ export function CreateSession() {
             console.log(data)
         });
           onClose()
-              
-
+          swal.fire({
+            icon: 'success',
+            text: "تم إضافة الجلسة بنجاح!",
+            iconColor: '#221409',
+            showCloseButton: true,
+            focusConfirm: false,
+            background: '#e7c6b9',
+            confirmButtonColor: '#103d3f',
+            confirmButtonText: 'OK',
+          }).then(()=>{
+            document.documentElement.scrollTop = 0; 
+            location.reload();
+          }) 
         }
     return (
       <>
