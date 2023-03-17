@@ -47,6 +47,9 @@ export default function SignUp() {
       localStorage.setItem("token", data.token);
       console.log(localStorage.getItem("token"))
       localStorage.setItem("username",data.username);
+      localStorage.setItem("email",data.email);
+      localStorage.setItem("role",data.role);
+
       navigate("/")
   });
   }
