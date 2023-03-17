@@ -201,23 +201,23 @@ const ChatMessage = ({ user, text, isSent, ...rest }: Message & ListItemProps) =
     <ChakraProvider>  
     <Flex  height="85vh">
     
-    <Container   w="20%" bg="#E8E2DF" p={4}  display={"flex"} alignItems="flex-start" justifyContent={"center"}>
+    <Container   w={{base:'30%', sm:'20%'}} bg="#E8E2DF" p={4}  display={"flex"} alignItems="flex-start" justifyContent={"center"}>
       <Box >
       
 
-      <Heading size='lg' mt={8} mb={2} color='#103D3F'>موضوع الجلسة</Heading>
+      <Heading size={{base:'sm', sm:'lg'}} mt={8} mb={2} color='#103D3F'>موضوع الجلسة</Heading>
       {topic}
-      <Heading size='md' mt={8} mb={2} color='#103D3F'>داعم الجلسة</Heading>
+      <Heading size={{base:'sm', sm:'md'}} mt={8} mb={2} color='#103D3F'>داعم الجلسة</Heading>
         {leader}
 
-        <Heading size='md' mt={8} mb={2} color='#103D3F' >المستفيدين</Heading>
+        <Heading size={{base:'sm', sm:'md'}} mt={8} mb={2} color='#103D3F' >المستفيدين</Heading>
         <Divider />
         <VStack mt={4} align="stretch" spacing={2}>
                      {allusers.map((element, index) => (
 
                       
              <Text key = {index} fontSize='xl' fontWeight='bold'>
-              {users.includes(element)? <Tag size='lg' colorScheme='green' borderRadius='full'>
+              {users.includes(element)? <Tag size={{base:'sm', sm:'lg'}}  colorScheme='green' borderRadius='full'>
   <Avatar
     src='https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQmatBzkPfadV3gbygHddFgNYbNzBbINaWqFamNP3zOCJyY-EZzJJZW3SjSpeYSGfSlsgI&usqp=CAU'
     size='xs'
@@ -228,7 +228,7 @@ const ChatMessage = ({ user, text, isSent, ...rest }: Message & ListItemProps) =
   <TagLabel>{element}</TagLabel>
 </Tag> : 
              
-             <Tag size='lg' colorScheme='red' borderRadius='full'>
+             <Tag size={{base:'sm', sm:'lg'}}  colorScheme='red' borderRadius='full'>
   <Avatar
     src='https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQmatBzkPfadV3gbygHddFgNYbNzBbINaWqFamNP3zOCJyY-EZzJJZW3SjSpeYSGfSlsgI&usqp=CAU'
     size='xs'
