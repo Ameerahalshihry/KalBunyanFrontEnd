@@ -1,9 +1,6 @@
 import React from 'react'
 
-import { useNavigate } from 'react-router-dom';
-
 import { ChakraProvider, SimpleGrid, Tabs, TabList, TabPanels, Tab, TabPanel, Box, Icon} from '@chakra-ui/react'
-import { BsArrow90DegDown, BsArrow90DegRight} from 'react-icons/all'
 
 import SessionCardAcademic from './sessionCard/SessionCardAcademic'
 import SessionCardOccupational from './sessionCard/SessionCardOccupational'
@@ -11,26 +8,11 @@ import SessionCardSocial from './sessionCard/SessionCardSocial'
 import SessionCardHealthy from './sessionCard/SessionCardHealthy'
 
 const Sessions = () => {
-
-  const navigate = useNavigate()
-  const ChatGPT =()=>{
-    navigate("/bot");   
-  }
-  const scrollFun =()=>{
-    window.scrollTo({
-      top: 200,
-      behavior: 'smooth',
-    }); 
-  }
   return (
     <ChakraProvider>
       <Box className='sessionsContainer'>
           <div className="headerSessions">
-            <div className='headerSessionsTitles'>
-              <h1><a onClick={ChatGPT} style={{cursor:'pointer'}}><Icon as={BsArrow90DegRight} w={7} h={7}/>تحدث مع ChatGPT</a></h1>
-              <h1>|</h1>
-              <h1><a onClick={scrollFun} style={{cursor:'pointer'}}>ابحث عن التحدي<Icon as={BsArrow90DegDown} w={7} h={7}/></a></h1>
-            </div>
+              <h1>ابحث عن التحدي</h1>
             <div className='lineSessions'></div>
           </div>
 

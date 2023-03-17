@@ -6,7 +6,6 @@ import swal from 'sweetalert2'
 
 export function CreateSession() {
     const { isOpen, onOpen, onClose } = useDisclosure()
-    const [x, setX] = useState(new Date());
 
     const initialRef = React.useRef(null)
     const finalRef = React.useRef(null)

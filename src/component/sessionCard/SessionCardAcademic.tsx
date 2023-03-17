@@ -19,7 +19,7 @@ const SessionCardAcademic = () => {
   const [suggestion, setSuggestion] = useState<any>();
 
   async function createsuggestion(){
-    
+
     swal.fire({
       icon: 'success',
       text: "تم إرسال إقتراحك بنجاح!",
@@ -98,7 +98,7 @@ const SessionCardAcademic = () => {
 
   return (
     <ChakraProvider>
-      <SimpleGrid minChildWidth='250px' gap={40} p='100px' >
+      <SimpleGrid minChildWidth='250px' gap={40} p={{ sm: 5, md: 70, lg: 100 }} >
         {  sessions && sessions.map((session:any)=>{
           return (
               <Card 
@@ -117,7 +117,7 @@ const SessionCardAcademic = () => {
                       <Flex>
                         <List spacing={2} textAlign='right' p='8'>
                           <ListItem ><Icon as={BsCalendar4Week} w={4} h={4} /> {new Date(session.date).toDateString() } </ListItem>
-                          <ListItem ><Icon as={IoTimeOutline} w={5} h={5} /> {new Date(session.date).toTimeString() } </ListItem>
+                          <ListItem ><Icon as={IoTimeOutline} w={5} h={5} /> {new Date(session.date).toLocaleTimeString("en-US", {timeZone: "UTC"}) } </ListItem>
                           <ListItem > الجلسة برعاية: {session.Leader} </ListItem>
                           <ListItem > المقاعد المتاحة: {10-session.users.length} </ListItem>
                           <ListItem > المشتركون: {session.users.length} </ListItem>
