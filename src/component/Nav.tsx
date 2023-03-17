@@ -1,6 +1,7 @@
 import React from 'react';
 import { useNavigate, NavLink } from 'react-router-dom';
 import logo from '../assets/logo.png'
+import LogIn from './LogIn';
 
 const Nav = () => {
 
@@ -8,8 +9,8 @@ const Nav = () => {
   const HomePage =()=>{
     navigate("/");   
   }
-  const SignUp =()=>{
-    navigate("/signUp");  
+  const LogIn =()=>{
+    navigate("/login");  
   }
   const Profile =()=>{
     navigate("/profile");
@@ -42,7 +43,7 @@ const Nav = () => {
         <>{(
         localStorage.getItem('token') == null ?
           <div className='btnNav'>
-            <button onClick={SignUp}>تسجيل الدخول</button>
+            <button onClick={LogIn}>تسجيل الدخول</button>
           </div>
           :
           <div className='btnNav'>

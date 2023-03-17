@@ -6,13 +6,13 @@ import {
   Input,
   Checkbox,
   Stack,
-  Link,
   Button,
   Heading,
   Text,
   Image,
   useColorModeValue,
-  ChakraProvider
+  ChakraProvider,
+  Link
 } from '@chakra-ui/react';
 import leaves from '../assets/img/1.png'
 import { useState } from 'react';
@@ -107,6 +107,11 @@ export default function LogIn() {
                 onClick={handleLogIn}>
                   تسجيل دخول
               </Button>
+                <Text>
+                  ليس لديك حساب ؟ 
+                <Link href='/signUp'> انشاء حساب</Link>
+
+                </Text>
             </Stack>
           </Stack>
         </Box>

@@ -31,7 +31,7 @@ const Suggestions = () => {
       direction={'column'}
       pb='6'
     > 
-      <Heading size='md'>هنا إقتراحات لجلسات تم طرحها من قبل المحتاجين لدعمك:</Heading>
+      <Heading size='md'>هنا ستجد إقتراحات لجلسات تم طرحها من قبل المحتاجين لدعمك</Heading>
       {suggestions && suggestions.map((suggestion:any)=> {
         return(
           <Text fontSize="lg">
