@@ -53,10 +53,10 @@ sessions()
           color="#103D3F"
           _dark={{ color: "gray.200" }} 
           justify={'center'}
-          direction={'row-reverse'}
+          style={{direction:'rtl'}}
         > 
           <Text fontSize="lg">
-            :موضوع الجلسة
+          موضوع الجلسة:
           </Text>
           <Text fontSize="lg">
               {session.topic}
@@ -68,10 +68,11 @@ sessions()
           color="#103D3F" 
           _dark={{ color: "gray.200" }} 
           justify={'center'}
-          direction={'row-reverse'}
+          style={{direction:'rtl'}}
+
           > 
           <Text fontSize="lg">
-            :موعد الجلسة
+          موعد الجلسة:
           </Text>
           <Text fontSize="lg">
           {new Date(session.date).toDateString() }   {new Date(session.date).toTimeString().slice(0,5) } 
@@ -85,10 +86,10 @@ sessions()
           color="#103D3F" 
           _dark={{ color: "gray.200" }} 
           justify={'center'}
-          direction={'row-reverse'}
+          style={{direction:'rtl'}}
           > 
           <Text fontSize="lg">
-            :داعم الجلسة
+            داعم الجلسة:
           </Text>
           <Text fontSize="lg" pb='5'>
             {session.Leader}

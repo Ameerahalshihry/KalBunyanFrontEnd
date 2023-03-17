@@ -70,19 +70,19 @@ const Profile = () => {
         <Container>
           <Tabs size='md' isFitted variant='enclosed' color='#103D3F' >
             <TabList mb='30px' >
-              <Tab _selected={{ bg:'#E6AE97', color:'#103D3F' }}>الجلسات السابقة</Tab>
-              <Tab _selected={{ bg:'#E6AE97', color:'#103D3F' }}>الجلسات القادمة</Tab>
+              {/* <Tab _selected={{ bg:'#E6AE97', color:'#103D3F' }}>الجلسات السابقة</Tab> */}
+              <Tab _selected={{ bg:'#E6AE97', color:'#103D3F' }}>الجلسات الملتحق بها </Tab>
               {
                 role == 'SUPPORTER' 
                 ?
-                <Tab _selected={{ bg:'#E6AE97', color:'#103D3F' }}> الجلسات المقترحة</Tab>
+                <Tab _selected={{ bg:'#E6AE97', color:'#103D3F' }}> إضافة جلسات </Tab>
                 : null
               }  
             </TabList>
             <TabPanels>
-              <TabPanel>
+              {/* <TabPanel>
                 <PastSessions />
-              </TabPanel>
+              </TabPanel> */}
               <TabPanel>
                 <UpComingSessions />
               </TabPanel>
