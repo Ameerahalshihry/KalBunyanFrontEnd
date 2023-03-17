@@ -37,8 +37,8 @@ function BottomPage() {
       <ChakraProvider>
 
       <Box width="100% "   minHeight="100vh" display="flex" flexDirection="column"  alignItems="center">
-        <Box textAlign="center" mt={'150px'}>
-          <Heading> روبوت داعم لتخطي تحديات الحياة</Heading>
+        <Box textAlign="center" mt={'180px'}>
+          <Heading style={{fontFamily:"Tajawal"}}> روبوت داعم لتخطي تحديات الحياة</Heading>
         </Box>
         <Box flex="1" display="flex" justifyContent="center" alignItems="center">
           <Container maxW="80vw">
@@ -65,7 +65,7 @@ function BottomPage() {
             </Box>
           </Container>
         </Box>
-        <Box minWidth={"100%"} pb={6}>
+        <Box minWidth={"100%"} pb={20}>
           <Container   >
             <Stack  direction="row" align="center">
               <Input  size = "lg"

@@ -92,6 +92,8 @@ const ChatMessage = ({ user, text, isSent, ...rest }: Message & ListItemProps) =
   const sessionId = params.id;
   const chatBoxRef = useRef<HTMLDivElement>(null);
 
+  const [role, setRole]= useState<any>(localStorage.getItem("role"));
+
   useEffect(() => {
 
   if( chatBoxRef.current)   chatBoxRef.current.scrollTo(0, chatBoxRef.current.scrollHeight);
@@ -197,27 +199,28 @@ const ChatMessage = ({ user, text, isSent, ...rest }: Message & ListItemProps) =
     }
   };
 
+
   return (
     <ChakraProvider>  
-    <Flex  height="100vh">
+    <Flex  height="85vh">
     
-    <Container   w="25%" bg="#E8E2DF" p={4}  display={"flex"} alignItems="flex-start" justifyContent={"center"}>
+    <Container   w={{base:'30%', sm:'20%'}} bg="#E8E2DF" p={4}  display={"flex"} alignItems="flex-start" justifyContent={"center"}>
       <Box >
       
 
-      <Heading  mb={4}>Topic</Heading>
+      <Heading size={{base:'sm', sm:'lg'}} mt={8} mb={2} color='#103D3F'>موضوع الجلسة</Heading>
       {topic}
-      <Heading mb={4}>Leader</Heading>
+      <Heading size={{base:'sm', sm:'md'}} mt={8} mb={2} color='#103D3F'>داعم الجلسة</Heading>
         {leader}
 
-        <Heading mb={4}>Users</Heading>
+        <Heading size={{base:'sm', sm:'md'}} mt={8} mb={2} color='#103D3F' >المستفيدين</Heading>
         <Divider />
         <VStack mt={4} align="stretch" spacing={2}>
                      {allusers.map((element, index) => (
 
                       
              <Text key = {index} fontSize='xl' fontWeight='bold'>
-              {users.includes(element)? <Tag size='lg' colorScheme='green' borderRadius='full'>
+              {users.includes(element)? <Tag size={{base:'sm', sm:'lg'}}  colorScheme='green' borderRadius='full'>
   <Avatar
     src='https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQmatBzkPfadV3gbygHddFgNYbNzBbINaWqFamNP3zOCJyY-EZzJJZW3SjSpeYSGfSlsgI&usqp=CAU'
     size='xs'
@@ -228,7 +231,7 @@ const ChatMessage = ({ user, text, isSent, ...rest }: Message & ListItemProps) =
   <TagLabel>{element}</TagLabel>
 </Tag> : 
              
-             <Tag size='lg' colorScheme='red' borderRadius='full'>
+             <Tag size={{base:'sm', sm:'lg'}}  colorScheme='red' borderRadius='full'>
   <Avatar
     src='https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQmatBzkPfadV3gbygHddFgNYbNzBbINaWqFamNP3zOCJyY-EZzJJZW3SjSpeYSGfSlsgI&usqp=CAU'
     size='xs'
@@ -244,10 +247,16 @@ const ChatMessage = ({ user, text, isSent, ...rest }: Message & ListItemProps) =
            </Text> 
              ))}     
         </VStack>
+        {/* {role == 'SUPPORTER'?
+        <Button mt={32} px={10} py={5}
+        onClick={handleSessionEnd}>
+          إنهاء الجلسة
+        </Button>
+        :null} */}
       </Box></Container>
 
       <Box  flex="1"   p={4} >
-        <Box ref= {chatBoxRef} overflowY={"scroll"}  height={"75vh"} borderWidth="1px" borderRadius="lg" >
+        <Box ref= {chatBoxRef} overflowY={"scroll"}  height={"60vh"} borderWidth="1px" borderRadius="lg" >
         <List>
 
         {messages.map((message, index) => (
@@ -267,13 +276,19 @@ const ChatMessage = ({ user, text, isSent, ...rest }: Message & ListItemProps) =
           <Box mt={4}>
               
                 <Textarea
-                  placeholder="Type your message here..."
+                  placeholder="اكتب رسالتك هنا ..."
                   value={message}
                   onChange={(event) => setMessage(event.target.value)}
                 />
               
-              <Button fontSize={"3xl"} color="whiteAlpha.800" colorScheme={"orange"} bgColor={"#103D3F"} onClick={handleMessageSubmit} mt={2}>
-                Send
+              <Button fontSize={"xl"}
+                bg={'#103D3F'}
+                color={'white'}
+                _hover={{
+                  bg: '#ABBEA9',
+                }} 
+                onClick={handleMessageSubmit} mt={2}>
+                إرسال
               </Button>
           </Box>
         </Box>
