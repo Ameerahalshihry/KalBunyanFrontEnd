@@ -113,7 +113,7 @@ const SessionCardSocial = () => {
                       <Flex>
                         <List spacing={2} textAlign='right' p='8'>
                           <ListItem ><Icon as={BsCalendar4Week} w={4} h={4} /> {new Date(session.date).toDateString() } </ListItem>
-                          <ListItem ><Icon as={IoTimeOutline} w={5} h={5} /> {new Date(session.date).toTimeString() } </ListItem>
+                          <ListItem ><Icon as={IoTimeOutline} w={5} h={5} /> {new Date(session.date).toLocaleTimeString("en-US", {timeZone: "UTC"}) } </ListItem>
                           <ListItem > الجلسة برعاية: {session.Leader} </ListItem>
                           <ListItem > المقاعد المتاحة: {10-session.users.length} </ListItem>
                           <ListItem > المشتركون: {session.users.length} </ListItem>

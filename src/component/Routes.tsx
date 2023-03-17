@@ -7,7 +7,7 @@ import Sessions from './Sessions'
 import Chat from '../Chatroom/Chat'
 import ChatGPTPage from '../ChatGPTPage/ChatGPTpage'
 import Profile from './Profile/Profile'
-import SupporterGuides from './Guides/SupporterGuides'
+import Contact from './Contact'
 const Routes_ = () => {
   return (
     <Routes>
@@ -19,6 +19,7 @@ const Routes_ = () => {
         {/* <Route path='/supporterGuides' element={<SupporterGuides />}></Route> */}
         <Route path='/chat/:id' element={<Chat/>}></Route>
         <Route path='/bot' element={<ChatGPTPage />}></Route>
+        <Route path='/contact' element={<Contact />}></Route>
     </Routes>
   )
 }

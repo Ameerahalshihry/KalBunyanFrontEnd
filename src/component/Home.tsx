@@ -11,8 +11,11 @@ import Profile from './Profile/Profile';
 
 const Home = () => {
   const navigate = useNavigate()
-  const SignUp =()=>{
-    navigate("/signUp")    
+  const Sessions =()=>{
+    navigate("/sessions")    
+  }
+  const ChatGPT =()=>{
+    navigate("/bot");   
   }
 
   return (
@@ -26,7 +29,8 @@ const Home = () => {
             <div className='headerContent'>
               <div>احصل على المساعدة، 
               <br/> مجموعات الدعم لمواجهة تحديات الحياة</div> 
-              <button onClick={SignUp}> انضم معنا</button>
+              <button onClick={Sessions}>إحجز جلستك</button>
+              <button onClick={ChatGPT} >تحدث مع ChatGPT</button>
             </div>
           </div>
                  

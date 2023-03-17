@@ -9,14 +9,6 @@ html, body {
   direction:rtl;
 }
 
-#someselector {
-  all: revert;
-}
-
-#someselector * {
-  all: revert
-}
-
 /*-------------------------------NAV-------------------------------*/
 nav {
   background-color: #E8E2DF;
@@ -155,12 +147,13 @@ footer li:hover {
   font-weight:900;
 }
 .headerContent button {
-  padding: 12px 30px;
+  padding: 12px 20px;
+  margin: 5px;
   border: none;
   border-radius: 8px;
   cursor: pointer;
   font-family: 'Tajawal', sans-serif;
-  font-size: 20px;
+  font-size: 15px;
   font-weight: 900;
   background-color: #103d3f;
   color: white;
@@ -280,12 +273,277 @@ footer li:hover {
   font-size: 45px;
   color: #103D3F;
   padding: 0px 150px 50px 150px;
-  
-}
-.headerSessionsTitles {
-  display: flex;
-  justify-content: space-around;
 }
 .lineSessions {
   border-bottom: 2px solid #E6AE97 ;
 }
+
+
+
+/*---------------------------------------------------------------------------------*/
+/*-----------------------------------RESPONSIVE------------------------------------*/
+
+/*-------------------------------------------------------------------------1024px*/
+@media only screen and (max-width: 1024px) {
+  /*-------------------------------HOME-------------------------------*/
+  /*----------header----------*/
+  .headerContentContainer {
+    margin: 90px 100px;
+  }
+  .headerContentContainer img {
+    height: 300px;
+  }
+  .headerContent {
+    font-size: 30px;
+  }
+  .headerContent button {
+    padding: 10px 24px;
+    font-size: 18px;
+  }
+  /*-------------------------------SESSIONS-------------------------------*/
+  
+  .headerSessions{
+    height: 20vh;
+    font-size: 40px;
+    padding: 25px 100px 50px 100px;
+  }
+}
+
+/*-------------------------------------------------------------------------768px*/
+@media only screen and (max-width: 768px) {
+  /*-------------------------------NAV-------------------------------*/
+  nav {
+    height:75px;
+  }
+  .mainNav {
+    height: 75px; 
+  }
+  .navBar img {
+    width: 80px;
+  }
+  .navBar a {
+    font-size: 18px;
+  }
+  /*----------login & singup btn & profile----------*/
+  .btnNav {
+    display: flex;
+    gap: 10px;
+    margin-right: 10px;
+  }
+  .btnNav button{
+    padding: 5px 15px;
+    font-size: 10px;
+  }
+  .btnNav p{
+    font-size: 16px;
+  }
+  /*-------------------------------FOOTER-------------------------------*/
+  footer {
+    display: flex;
+    flex-direction: column;
+    font-size: 10px;
+    height: 100px;
+  }
+  footer p {
+    font-size: 12px;
+  }
+  footer ul{
+    padding: 0px;
+  }
+  footer li {  
+    padding: 5px 6px 1px 6px;
+  }
+  /*-------------------------------HOME--------------------------------*/
+  /*----------header----------*/
+  .headerContentContainer {
+    margin: 90px 60px;
+  }
+  .headerContentContainer img {
+    height: 250px;
+  }
+  .headerContent {
+    font-size: 23px;
+  }
+  .headerContent button {
+    padding: 10px 24px;
+    font-size: 15px;
+  }
+  /*----------plan section----------*/
+  .palnSection h1 {
+    font-size: 35px;
+    margin: 10px 10px 10px 200px;
+  }
+  /*----------vision section----------*/
+  .visionSection h1 {
+    font-size: 35px;
+  }
+  .visionSection p {
+    font-size: 15px;
+  }
+  /*----------whyUs section----------*/
+  .whyUsSection h1 {
+    font-size: 35px;
+    margin: 10px 10px 10px 200px;
+  }
+  /*----------newsletter section----------*/
+  .newsletterBg {
+    background-position: right;
+    height: 30vh;
+  }
+  .newsletterContent {
+    display: flex;
+    justify-content: left;
+    align-items: center;
+    gap: 10px;
+    padding: 120px 0px 0px 20px;
+
+  }
+  .newsletterContent h3 {
+    font-size: 18px;
+  }
+  .newsletterContent button {
+    padding: 8px 20px;
+    font-size: 15px;
+  }
+  .newsletterContent input {
+    padding: 10px 60px;
+  }
+  /*-------------------------------SESSIONS-------------------------------*/
+  .headerSessions{
+    font-size: 28px;
+    padding: 25px 100px 50px 100px;
+  }
+}
+
+/*-------------------------------------------------------------------------425px*/
+@media only screen and (max-width: 425px) {
+  /*-------------------------------NAV-------------------------------*/
+  nav {
+    height:75px; 
+  }
+  .mainNav {
+    height: 75px; 
+  }
+  .navBar {
+    gap: 0px;
+  }
+  .navBar img {
+    width: 60px;
+    margin-right: 20px;
+  }
+  .navBar a {
+    font-size: 12px;
+  }
+  .navBar ul {
+    gap: 20px;
+    padding-right: 10px;
+  }
+  /*----------login & singup btn & profile----------*/
+  .btnNav {
+    margin-right: 10px;
+  }
+  .btnNav button{
+    padding: 4px 13px;
+    font-size: 8px;
+  }
+  .btnNav p{
+    font-size: 12px;
+  }
+  /*-------------------------------FOOTER-------------------------------*/
+  footer {
+    display: flex;
+    flex-direction: column;
+    font-size: 10px;
+    height: 100px;
+  }
+  footer p {
+    font-size: 8px;
+  }
+  footer ul{
+    padding: 0px;
+  }
+  footer li {  
+    padding: 5px 6px 1px 6px;
+  }
+  /*-------------------------------HOME--------------------------------*/
+  /*----------header----------*/
+  .headerContainer {
+    height: 70vh;
+  }
+  .headerContentContainer {
+    flex-direction: column;
+    justify-content: space-between;
+    gap: 20px;
+    align-items: center;
+    margin: 100px 30px;
+  }
+  .headerContentContainer img {
+    height: 190px;
+  }
+  .headerContent {
+    text-align: center;
+    font-size: 18px;
+  }
+  .headerContent button {
+    padding: 8px 20px;
+    font-size: 10px;
+  }
+  /*----------plan section----------*/
+  .palnSection h1 {
+    font-size: 20px;
+    margin: 10px 10px 10px 40px;
+  }
+  /*----------vision section----------*/
+  .visionSection {
+    margin: 80px 30px 80px 0px;
+  }
+  .visionSection h1 {
+    font-size: 20px;
+  }
+  .visionSection p {
+    font-size: 8px;
+    padding: 20px;
+  }
+  .visionSection img {
+    width: 40%;
+    height: 40%;
+  }
+  /*----------whyUs section----------*/
+  .whyUsSection h1 {
+    font-size: 20px;
+    margin: 10px 10px 10px 40px;
+  }
+  /*----------newsletter section----------*/
+  .newsletterBg {
+    background-position: center;
+    height: 40vh;
+  }
+  .newsletterContent {
+    display: flex;
+    flex-direction: column;
+    justify-content: left;
+    align-items: center;
+    gap: 5px;
+    padding-top: 140px;
+  }
+  .newsletterContent h3 {
+    font-size: 12px;
+  }
+  .newsletterContent button {
+    padding: 8px 20px;
+    font-size: 8px;
+  }
+  .newsletterContent input {
+    padding: 5px 6px;
+  }
+  /*-------------------------------SESSIONS-------------------------------*/
+  .sessionsContainer{
+  padding: 5%;
+  }
+  .headerSessions{
+    height: 20vh;
+    font-size: 25px;
+    padding: 10px 10px 10px 10px;
+  }
+}
+  
