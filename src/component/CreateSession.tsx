@@ -1,6 +1,7 @@
 import { useDisclosure, Button, Modal, ModalOverlay, ModalContent, ModalHeader, ModalCloseButton, ModalBody, FormControl, FormLabel, Input, ModalFooter, Text , Image, ChakraProvider, Box, Textarea, Select} from "@chakra-ui/react"
 import React, { useState } from "react"
 import DateTimePicker from 'react-datetime-picker';
+import SupporterGuides from './Guides/SupporterGuides';
 
 import swal from 'sweetalert2'
 
@@ -61,6 +62,9 @@ export function CreateSession() {
         m='6' textAlign={'center'} fontSize={'lg'} fontWeight={'bold'}>
       يمكنك ان تحدث فرقاً في حياة الآخرين وتشارك تجارب حياتك وتجلب الأمل للآخرين بضغطة واحدة لإنشاء جلسة
       </Text>
+
+      <SupporterGuides />
+
         <Button onClick={onOpen}
         bg={'#103D3F'}
         color={'white'}

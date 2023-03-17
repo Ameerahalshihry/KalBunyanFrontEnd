@@ -1,4 +1,4 @@
-import { Flex, Text, Icon, Heading } from '@chakra-ui/react'
+import { Flex, Text, Icon, Heading, Link } from '@chakra-ui/react'
 import React, { useEffect, useState } from 'react'
 import { BsLightbulb } from 'react-icons/all';
 
@@ -39,6 +39,7 @@ const Suggestions = () => {
         </Text>
         )
       })}
+
       <CreateSession/>     
 </Flex>
 </>

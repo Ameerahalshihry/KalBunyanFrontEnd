@@ -1,6 +1,7 @@
-import { Flex, Box, Text } from '@chakra-ui/react'
+import { Flex, Box, Text, Divider } from '@chakra-ui/react'
 import React from 'react'
 import { CiMail } from 'react-icons/all'
+import UserGuides from '../Guides/UserGuides'
 
 const PersonalInfo = () => {
   return (
@@ -30,7 +31,10 @@ const PersonalInfo = () => {
             <Text fontSize="lg">
                 {localStorage.getItem('email')}
             </Text>
+          
           </Flex>
+          <Divider />
+            <UserGuides/>
         </Box>
     </>
   )
