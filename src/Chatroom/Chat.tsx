@@ -92,6 +92,8 @@ const ChatMessage = ({ user, text, isSent, ...rest }: Message & ListItemProps) =
   const sessionId = params.id;
   const chatBoxRef = useRef<HTMLDivElement>(null);
 
+  const [role, setRole]= useState<any>(localStorage.getItem("role"));
+
   useEffect(() => {
 
   if( chatBoxRef.current)   chatBoxRef.current.scrollTo(0, chatBoxRef.current.scrollHeight);
@@ -197,6 +199,7 @@ const ChatMessage = ({ user, text, isSent, ...rest }: Message & ListItemProps) =
     }
   };
 
+
   return (
     <ChakraProvider>  
     <Flex  height="85vh">
@@ -244,6 +247,12 @@ const ChatMessage = ({ user, text, isSent, ...rest }: Message & ListItemProps) =
            </Text> 
              ))}     
         </VStack>
+        {/* {role == 'SUPPORTER'?
+        <Button mt={32} px={10} py={5}
+        onClick={handleSessionEnd}>
+          إنهاء الجلسة
+        </Button>
+        :null} */}
       </Box></Container>
 
       <Box  flex="1"   p={4} >

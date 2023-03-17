@@ -11,7 +11,9 @@ interface FeatureProps {
 const Feature = ({ title, text, icon }: FeatureProps) => {
   return (
     <ChakraProvider>
-      <Stack>
+      <Stack 
+      align={'center'}
+      mb='16'>
         <Flex
           w={16}
           h={16}
@@ -23,8 +25,8 @@ const Feature = ({ title, text, icon }: FeatureProps) => {
           mb={1}>
           {icon}
         </Flex>
-        <Text fontWeight={600}>{title}</Text>
-        <Text color={'gray.600'}>{text}</Text>
+        <Text fontWeight={600} style={{fontSize:"25px", fontFamily:"Tajawal"}} align={'center'}>{title}</Text>
+        <Text color={'gray.600'} style={{fontSize:"20px", fontFamily:"Tajawal"}} align={'center'}>{text}</Text>
       </Stack>
     </ChakraProvider>
     
@@ -35,7 +37,7 @@ export default function SimpleThreeColumns() {
     return (
         <Box p={4}>
           
-            <SimpleGrid columns={{ base: 1, md: 3 }} spacing={10}>
+            <SimpleGrid columns={{ base: 1, md: 3 }} spacing={20}>
               <Feature
                 icon={<Icon as={FcMindMap} w={10} h={10} />}
                 title={'الدعم'}
@@ -44,6 +46,7 @@ export default function SimpleThreeColumns() {
                 }
               />
               <Feature
+
                 icon={<Icon as={FcLock} w={10} h={10} />}
                 title={'الخصوصية والسرية'}
                 text={
@@ -54,7 +57,7 @@ export default function SimpleThreeColumns() {
                 icon={<Icon as={FcVoicePresentation} w={10} h={10} />}
                 title={'مثال'}
                 text={
-                  'أنا أعاني من أجل تحقيق التوازن بين عملي وحياتي الشخصية. كيف يمكنني خلق توازن أفضل؟'
+                  'أنا أعاني من عدم تحقيق التوازن بين عملي وحياتي الشخصية. كيف يمكنني خلق توازن أفضل؟'
                                }
               />
             </SimpleGrid>

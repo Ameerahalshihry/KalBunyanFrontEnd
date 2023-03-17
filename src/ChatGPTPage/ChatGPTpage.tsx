@@ -35,14 +35,15 @@ import BottomPage from './BottomPage';
             <Heading
             color={'#103D3F'}
               fontWeight={600}
-              fontSize={{ base: '3xl', sm: '4xl', md: '6xl' }}
-              lineHeight={'110%'}>
+              fontSize={{ base: '2xl', sm: '3xl', md: '5xl' }}
+              lineHeight={'110%'}
+              style={{fontFamily:"Tajawal"}}>
               احصل على الدعم والمساعدة  {' '}
               <Text as={'span'} color={'#D38E72'}>
-                ب خصوصية تامة
+                بخصوصية تامة
               </Text>
             </Heading>
-            <Text color={'gray.500'} maxW={'3xl'}>
+            <Text color={'gray.500'} maxW={'3xl'} style={{fontFamily:"Tajawal"}}>
             احصل على المساعدة من روبوت محادثة مصمم للاستماع إليك وتقديم النصيحة - مدعوم من GPT 3.5. نحن لا نحفظ محادثاتك أبدًا ، كل شيء خاص.
             </Text>
               <Button
