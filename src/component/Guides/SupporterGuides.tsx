@@ -25,7 +25,7 @@ function SupporterGuides() {
       </Link>
 
       <Modal isOpen={isOpen} onClose={onClose} 
-      style={{direction: 'rtl'}}>
+      >
         <ModalOverlay />
         <ModalContent>
           <ModalHeader>الشروط والضوابط</ModalHeader>
