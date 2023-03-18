@@ -21,7 +21,7 @@ export function CreateSession() {
     const handleCreateSession = async()=>{
       console.log(date)
       
-        await fetch('http://localhost:3000/session/create',{
+        await fetch('https://kalboonyan.onrender.com/session/create',{
             method: "POST",
             headers:{ 
               "authorization": token,

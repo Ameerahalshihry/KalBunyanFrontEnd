@@ -36,7 +36,7 @@ const SessionCardHealthy = () => {
     })
 
       if(suggestion){
-    await fetch('http://localhost:3000/suggestions',{
+    await fetch('https://kalboonyan.onrender.com/suggestions',{
       method: "POST",
       headers:{
           "Content-Type": "application/json"
@@ -72,7 +72,7 @@ const SessionCardHealthy = () => {
   }
 
   useEffect(() => {
-      fetch('http://localhost:3000/session',{
+      fetch('https://kalboonyan.onrender.com/session',{
       method: "GET",
       headers:{
           "Content-Type": "application/json"

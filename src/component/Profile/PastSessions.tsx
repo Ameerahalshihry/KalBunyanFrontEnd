@@ -12,7 +12,7 @@ const PastSessions = () => {
 
     const sessions = async () =>{
       
-      await fetch('http://localhost:3000/session/profile/sessions',{
+      await fetch('hhttps://kalboonyan.onrender.com/profile/sessions',{
      method: "GET",
 
       headers:{ 

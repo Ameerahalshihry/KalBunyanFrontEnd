@@ -104,7 +104,7 @@ const ChatMessage = ({ user, text, isSent, ...rest }: Message & ListItemProps) =
     let name = localStorage.getItem('username')
     name && setUsername(name)
     async function getSession(){
-        const session = await fetch(`http://localhost:3000/session/${sessionId}`, {
+        const session = await fetch(`https://kalboonyan.onrender.com/session/${sessionId}`, {
           method: "GET",
           headers: {
             "Content-Type": "application/json"

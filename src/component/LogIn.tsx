@@ -28,7 +28,7 @@ export default function LogIn() {
 
 
   const handleLogIn = async () => {
-    await fetch('http://localhost:3000/user/login',{
+    await fetch('https://kalboonyan.onrender.com/user/login',{
       method: "POST",
       headers:{
           "Content-Type": "application/json"

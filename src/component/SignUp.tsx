@@ -30,7 +30,7 @@ export default function SignUp() {
   const navigate = useNavigate();
 
   const handleSingUp = async () => {
-    await fetch('http://localhost:3000/user/create',{
+    await fetch('https://kalboonyan.onrender.com/user/create',{
       method: "POST",
       headers:{
           "Content-Type": "application/json"

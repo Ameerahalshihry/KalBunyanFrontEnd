@@ -15,7 +15,7 @@ function BottomPage() {
     setIsLoading(true);
         setResponse('');
         console.log(prompt)
-        const chatResponse = await fetch("http://localhost:3000/chat/prompt", {
+        const chatResponse = await fetch("https://kalboonyan.onrender.com/chat/prompt", {
           method: "POST",
           headers: {
             "Content-Type": "application/json"

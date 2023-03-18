@@ -35,7 +35,7 @@ const SessionCardAcademic = () => {
     }) 
 
       if(suggestion){
-    await fetch('http://localhost:3000/session/suggestions',{
+    await fetch('https://kalboonyan.onrender.com/suggestions',{
       method: "POST",
       headers:{
           "Content-Type": "application/json"
@@ -54,7 +54,7 @@ const SessionCardAcademic = () => {
         if(!localStorage.getItem('token')){navigate('/login')}
       if(session.users.length==10){return;}
       
-      await fetch('http://localhost:3000/session/join',{
+      await fetch('https://kalboonyan.onrender.com/session/join',{
       method: "PUT",
       headers:{
           "authorization": token,
@@ -76,7 +76,7 @@ const SessionCardAcademic = () => {
   }
 
   useEffect(() => {
-      fetch('http://localhost:3000/session',{
+      fetch('https://kalboonyan.onrender.com/session',{
       method: "GET",
       headers:{     
           "Content-Type": "application/json"        
